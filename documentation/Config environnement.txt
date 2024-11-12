@@ -1,0 +1,7 @@
+Vérifications et pré-requis :
+
+1- Dans php.ini, vérifiez que l'extension .ZIP soit activée (décommentez)
+
+2- Version PHP : 8.2 minimum sinon réinstaller XAMPP
+
+3- Il faut que le PHP soit dans le répertoire C:/xampp/php

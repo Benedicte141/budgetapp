@@ -17,12 +17,75 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer un email.',
+                    ]),
+                ],
+            ])
+            ->add('nom', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre nom.',
+                    ]),
+                ],
+            ])
+            ->add('prenom', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre prénom.',
+                    ]),
+                ],
+            ])
+            ->add('civilite', ChoiceType::class, [
+                'choices' => [
+                    'Mme' => 'Mme',
+                    'Mr' => 'Mr',
+                    'Non renseigné' => 'Non renseigné',
+                ],
+                'placeholder' => 'Choisissez votre civilité', // Optionnel : Ajoute une option par défaut vide
+                'expanded' => false, // Définit si les choix doivent être affichés en liste déroulante (false) ou en boutons radio (true)
+                'multiple' => false, // Définit si plusieurs choix sont possibles (false pour un seul choix)
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez choisir votre civilité.',
+                    ]),
+                ]
+            ])
+            ->add('cp', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre code postale.',
+                    ]),
+                ],
+            ])
+            ->add('pays', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre pays.',
+                    ]),
+                ],
+            ])
+            ->add('adresse', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre adresse.',
+                    ]),
+                ],
+            ])
+            ->add('ville', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre ville.',
+                    ]),
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Veuillez accepter les conditions.',
                     ]),
                 ],
             ])
@@ -33,11 +96,11 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez entrer votre mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

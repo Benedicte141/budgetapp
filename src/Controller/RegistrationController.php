@@ -58,6 +58,38 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+
+
+    #[Route('/modify', name: 'app_register')]
+    public function modify(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setNom($form->get('nom')->getData());
+            $user->setPrenom($form->get('prenom')->getData());
+            $user->setCivilite($form->get('civilite')->getData());
+            $user->setCp($form->get('cp')->getData());
+            $user->setPays($form->get('pays')->getData());
+            $user->setAdresse($form->get('adresse')->getData());
+            $user->setVille($form->get('ville')->getData());
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form,
+        ]);
+    }
+
+
+
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {

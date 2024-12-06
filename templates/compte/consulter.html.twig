@@ -9,18 +9,27 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Liste des opérations </h1>
+        <h2>Informations du compte :</h2>
+        <p>Nom du compte : {{ compte.nom }}</p>
+        <p>Solde : {{ compte.solde }}</p>
+        <p>N° de compte : {{ compte.numero }}</p>
+        <p>Type de compte : {{ compte.typeCompte.libelle }}</p>
+    </div>
 
-        <table>
-            {% for o in operation %}
-                <tr>
-                <td>{{ o.montant }}</td>
-                <td>{{ o.libelle }}</a></td>
-                <td>{{ c.numero('') }}</td>
-                <td>{{ c.solde('€')}}</td>
-            {% else %}
-                <tr>
-                    <td>Aucun compte n'a été trouvé.</td>
+    <div class="example-wrapper">
+        <h2>Opérations :</h2>
+        <table border="1">
+        {% for o in compte.operations %}
+
+
+            <tr>
+
+                <td>{{ o.montant }} €</td>
+                <td>{{ o.libelle }}</td>
+
+
+
+
                 </tr>
             {% endfor %}
         </table>

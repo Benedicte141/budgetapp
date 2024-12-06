@@ -34,6 +34,10 @@ class Compte
     #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'compte')]
     private Collection $operations;
 
+    #[ORM\ManyToOne(inversedBy: 'comptes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeCompte $typeCompte = null;
+
     public function __construct()
     {
         $this->operations = new ArrayCollection();
@@ -118,6 +122,18 @@ class Compte
                 $operation->setCompte(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypeCompte(): ?TypeCompte
+    {
+        return $this->typeCompte;
+    }
+
+    public function setTypeCompte(?TypeCompte $typeCompte): static
+    {
+        $this->typeCompte = $typeCompte;
 
         return $this;
     }

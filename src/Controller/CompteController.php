@@ -18,6 +18,5 @@ class CompteController extends AbstractController
 
 		return $this->render('compte/lister.html.twig', [
             'comptes' => $comptes,]);	
- 
 	}
 }

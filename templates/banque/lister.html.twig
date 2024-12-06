@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lister les banques{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+</style>
+{% endblock %}
+
+<div class="example-wrapper">
+    <h1>Liste des banques</h1>
+
+    <table>
+        <tr>
+            <th>Nom de la banque</th>
+        </tr>
+        {% for b in banques %}
+        <tr>
+            <td>{{ b.nom }}</td>
+        {% else %}
+            <tr>
+            <td>Aucune banque n'a été trouvée.</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

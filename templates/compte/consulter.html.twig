@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des opérations{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Liste des opérations </h1>
+
+        <table>
+            {% for o in operation %}
+                <tr>
+                <td>{{ o.montant }}</td>
+                <td>{{ o.libelle }}</a></td>
+                <td>{{ c.numero('') }}</td>
+                <td>{{ c.solde('€')}}</td>
+            {% else %}
+                <tr>
+                    <td>Aucun compte n'a été trouvé.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

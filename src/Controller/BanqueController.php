@@ -24,4 +24,22 @@ class BanqueController extends AbstractController
         return $this->render('banque/lister.html.twig',[
             'banques' => $banques,]);
     }
+
+    #[Route('/banque/consulter/{id}', name: 'app_banque_details')]
+    public function show(int $id, EntityManagerInterface $entityManager){
+    {
+        //Trouver la banque par son ID
+        $banque = $entityManager->getRepository(Banque::class)->find($id);
+
+        // Vérifier si la banque existe
+        if (!$banque) {
+            throw $this->createNotFoundException('Cette banque n\'existe pas.');
+        }
+
+        //Renvoyer la vue avec les informations de la banque
+        return $this->render('banque/consulter.html.twig', [
+            'banque' => $banque,
+        ]);
+    }
+}
 }

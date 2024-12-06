@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des comptes de la banque {{banque.nom}}{% endblock %}
+
+{% block body %}
+
+{% block stylecheets %}
+<style>
+</style>
+{% endblock %}
+
+    <h1>Compte de la banque {{banque.nom}}</h1>
+
+    <a href="{{ path('app_banque_list') }}">Retour à la liste des banques</a>
+{% endblock %}

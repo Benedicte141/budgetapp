@@ -22,7 +22,7 @@ class TypeCompte
      * @var Collection<int, Compte>
      */
     #[ORM\OneToMany(targetEntity: Compte::class, mappedBy: 'typeCompte')]
-    private Collection $comptes;
+    private Collection $coCmptes;
 
     public function __construct()
     {

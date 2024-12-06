@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -60,10 +61,15 @@ class RegistrationController extends AbstractController
 
 
 
-    #[Route('/modify', name: 'app_register')]
+    #[Route('/modify', name: 'app_modify_infos_user')]
     public function modify(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException('Vous devez être connecté pour modifier vos informations.');
+        }
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -80,11 +86,11 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_modify_infos_user');
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+        return $this->render('registration/modify_user.html.twig', [
+            'modifyForm' => $form->createView(),
         ]);
     }
 

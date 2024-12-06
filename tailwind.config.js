@@ -4,7 +4,7 @@ module.exports = {
     './templates/**/*.html.twig', // Inclure vos fichiers Twig
     './templates/security/login.html.twig', // Inclure vos fichiers Twig
     './templates/base.html.twig', // Inclure vos fichiers Twig
-    './assets/**/*.js',
+    './assets/*.js',
   ],
   theme: {
     extend: {},

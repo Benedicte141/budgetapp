@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Banque;
+use Symfony\Component\HttpFoundation\Request;
 
 class BanqueController extends AbstractController
 {
@@ -25,6 +26,33 @@ class BanqueController extends AbstractController
             'banques' => $banques,]);
     }
 
+    #[Route('/banque/ajouter', name: 'app_banque_ajouter')]
+    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Créer une nouvelle instance de Banque
+        $banque = new Banque();
+    
+        // Créer le formulaire
+        $form = $this->createForm(BanqueType::class, $banque);
+    
+        // Gérer la soumission du formulaire
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Sauvegarder la banque dans la base de données
+            $entityManager->persist($banque);
+            $entityManager->flush();
+    
+            // Rediriger vers la liste des banques après ajout
+            return $this->redirectToRoute('app_banque_list');
+        }
+    
+        // Afficher le formulaire
+        return $this->render('banque/ajouter.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    
     #[Route('/banque/consulter/{id}', name: 'app_banque_details')]
     public function show(int $id, EntityManagerInterface $entityManager){
     {

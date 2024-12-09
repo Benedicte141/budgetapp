@@ -36,9 +36,13 @@ class BanqueController extends AbstractController
             throw $this->createNotFoundException('Cette banque n\'existe pas.');
         }
 
+        //Récupérer les comptes associés à la banque
+        $comptes = $banque->getComptes();
+
         //Renvoyer la vue avec les informations de la banque
         return $this->render('banque/consulter.html.twig', [
             'banque' => $banque,
+            'comptes' => $comptes,
         ]);
     }
 }

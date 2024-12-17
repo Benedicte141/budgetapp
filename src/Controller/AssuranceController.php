@@ -9,13 +9,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AssuranceController extends AbstractController
 {
-    #[Route('/contrat/consulter', name: 'app_consulter_contrat')]
-    public function consulterContrat(EntityManagerInterface $entityManager)
+    #[Route('/contrat/lister', name: 'app_lister_contrat')]
+    public function listerContrat(EntityManagerInterface $entityManager)
     {
-        $contrat = $entityManager->getRepository(Contrat::class)->findAll();
+        $contrats = $entityManager->getRepository(Contrat::class)->findAll();
 
-        return $this->render('assurance/consulter.html.twig', [
-            'contrat' => $contrat,
+        return $this->render('assurance/lister.html.twig', [
+            'contrats' => $contrats,
         ]);
     }
 }

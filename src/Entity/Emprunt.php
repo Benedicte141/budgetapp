@@ -42,6 +42,10 @@ class Emprunt
     #[ORM\JoinColumn(nullable: false)]
     private ?Periodicite $periodicite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'emprunts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeEmprunt $typeEmprunt = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +155,18 @@ class Emprunt
     public function setPeriodicite(?Periodicite $periodicite): static
     {
         $this->periodicite = $periodicite;
+
+        return $this;
+    }
+
+    public function getTypeEmprunt(): ?TypeEmprunt
+    {
+        return $this->typeEmprunt;
+    }
+
+    public function setTypeEmprunt(?TypeEmprunt $typeEmprunt): static
+    {
+        $this->typeEmprunt = $typeEmprunt;
 
         return $this;
     }

@@ -26,10 +26,10 @@ class Abonnement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $objet = null;
 
-    #[ORM\ManyToOne(inversedBy: 'abonnement')]
+    #[ORM\ManyToOne(inversedBy: 'abonnements')]
     private ?TypeAbonnement $type_abonnement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'abonnement')]
+    #[ORM\ManyToOne(inversedBy: 'abonnements')]
     private ?Periodicite $periodicite = null;
 
     #[ORM\ManyToOne(inversedBy: 'abonnements')]

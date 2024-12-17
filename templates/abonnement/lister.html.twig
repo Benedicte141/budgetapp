@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des abonnements{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+    <style>
+    </style>
+{% endblock %}
+
+    <div>
+        <h1>Lister les abonnements</h1>
+
+        <table>
+            <tr>
+                <th></th>
+            </tr>
+            {% for a in abonnements %}
+            <tr>
+                <td></td>
+            </tr>
+            {% else %}
+                <td>Aucun abonnement n'a été trouvé.</td>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

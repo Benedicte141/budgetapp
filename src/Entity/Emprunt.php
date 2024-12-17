@@ -46,6 +46,10 @@ class Emprunt
     #[ORM\JoinColumn(nullable: false)]
     private ?TypeEmprunt $typeEmprunt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'emprunts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Banque $banque = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,6 +171,18 @@ class Emprunt
     public function setTypeEmprunt(?TypeEmprunt $typeEmprunt): static
     {
         $this->typeEmprunt = $typeEmprunt;
+
+        return $this;
+    }
+
+    public function getBanque(): ?Banque
+    {
+        return $this->banque;
+    }
+
+    public function setBanque(?Banque $banque): static
+    {
+        $this->banque = $banque;
 
         return $this;
     }

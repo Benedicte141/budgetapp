@@ -24,9 +24,16 @@ class Banque
     #[ORM\OneToMany(targetEntity: Compte::class, mappedBy: 'banque')]
     private Collection $comptes;
 
+    /**
+     * @var Collection<int, Emprunt>
+     */
+    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'banque', orphanRemoval: true)]
+    private Collection $emprunts;
+
     public function __construct()
     {
         $this->comptes = new ArrayCollection();
+        $this->emprunts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,6 +77,36 @@ class Banque
             // set the owning side to null (unless already changed)
             if ($compte->getBanque() === $this) {
                 $compte->setBanque(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Emprunt>
+     */
+    public function getEmprunts(): Collection
+    {
+        return $this->emprunts;
+    }
+
+    public function addEmprunt(Emprunt $emprunt): static
+    {
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts->add($emprunt);
+            $emprunt->setBanque($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmprunt(Emprunt $emprunt): static
+    {
+        if ($this->emprunts->removeElement($emprunt)) {
+            // set the owning side to null (unless already changed)
+            if ($emprunt->getBanque() === $this) {
+                $emprunt->setBanque(null);
             }
         }
 

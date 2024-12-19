@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PeriodiciteRepository;
+use App\Repository\TypeEmpruntRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PeriodiciteRepository::class)]
-class Periodicite
+#[ORM\Entity(repositoryClass: TypeEmpruntRepository::class)]
+class TypeEmprunt
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +21,7 @@ class Periodicite
     /**
      * @var Collection<int, Emprunt>
      */
-    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'periodicite', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'typeEmprunt', orphanRemoval: true)]
     private Collection $emprunts;
 
     public function __construct()
@@ -58,7 +58,7 @@ class Periodicite
     {
         if (!$this->emprunts->contains($emprunt)) {
             $this->emprunts->add($emprunt);
-            $emprunt->setPeriodicite($this);
+            $emprunt->setTypeEmprunt($this);
         }
 
         return $this;
@@ -68,8 +68,8 @@ class Periodicite
     {
         if ($this->emprunts->removeElement($emprunt)) {
             // set the owning side to null (unless already changed)
-            if ($emprunt->getPeriodicite() === $this) {
-                $emprunt->setPeriodicite(null);
+            if ($emprunt->getTypeEmprunt() === $this) {
+                $emprunt->setTypeEmprunt(null);
             }
         }
 

@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des abonnements{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+<style>
+    /* Structure globale */
+    div {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+
+    div code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+        border-radius: 3px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 20px;
+        color: #333;
+    }
+
+    /* En-tête */
+    h1 {
+        text-align: center;
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    /* Style de la table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+        color: #555;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+</style>
+{% endblock %}
+
+    <div>
+        <h1>Lister les abonnements</h1>
+
+        <table>
+            <tr>
+                <th>Organisme</th>
+                <th>Abonnement</th>
+                <th>N° Client</th>
+                <th>Date souscription</th>
+                <th>Montant</th>
+                <th>Périodicité</th>
+                <th>Objet</th>
+            </tr>
+            {% for a in abonnements %}
+            <tr>
+                <td>{{ a.organisme.nom }}</td>
+                <td>{{ a.TypeAbonnement.nom }}</td>
+                <td>{{ a.numeroClient }}</td>
+                <td>{{ a.dateSouscription|date('d/m/Y') }}</td>
+                <td>{{ a.montant }} €</td>
+                <td>{{ a.Periodicite.nom }}</td>
+                <td>{{ a.objet }}</td>
+            </tr>
+            {% else %}
+                <td>Aucun abonnement n'a été trouvé.</td>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

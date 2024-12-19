@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contrats d'assurance{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h2>Contrats d'assurance :</h2>
+        <table border="1">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Compagnie</th>
+                    <th>Numéro client</th>
+                    <th>Date de souscription</th>
+                    <th>Montant</th>
+                    <th>Périodicité</th>
+                    <th>Couverture</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in contrats %}
+                    <tr>
+                        <td>{{ c.typeContrat.libelle }}</td>
+                        <td>{{ c.compagnie.libelle }}</td>
+                        <td>{{ c.numclient }}</td>
+                        <td>{{ c.datesous |date('d/m/Y') }}</td>
+                        <td>{{ c.montant }}</td>
+                        <td>{{ c.periodicite.libelle }}</td>
+                        <td>{{ c.libellecouverture }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

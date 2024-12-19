@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Periodicite;
+use App\Entity\TypeContrat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Periodicite>
+ * @extends ServiceEntityRepository<TypeContrat>
  */
-class PeriodiciteRepository extends ServiceEntityRepository
+class TypeContratRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Periodicite::class);
+        parent::__construct($registry, TypeContrat::class);
     }
 
     //    /**
-    //     * @return Periodicite[] Returns an array of Periodicite objects
+    //     * @return TypeContrat[] Returns an array of TypeContrat objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
+    //        return $this->createQueryBuilder('t')
+    //            ->andWhere('t.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
+    //            ->orderBy('t.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Periodicite
+    //    public function findOneBySomeField($value): ?TypeContrat
     //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
+    //        return $this->createQueryBuilder('t')
+    //            ->andWhere('t.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

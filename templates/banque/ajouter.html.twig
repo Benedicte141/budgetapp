@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Banque{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une Nouvelle Banque</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success">Enregistrer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_banque_list') }}" class="btn btn-secondary">Annuler</a>
+{% endblock %}

@@ -5,3 +5,16 @@
 body {
     background-color: white;
 }
+
+table{
+    @apply table;
+}
+
+tr{
+    @apply hover;
+
+}
+
+h1{
+    @apply collapse-title text-xl font-medium;
+}

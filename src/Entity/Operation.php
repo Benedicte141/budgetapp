@@ -22,6 +22,7 @@ class Operation
     #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?Compte $compte = null;
 
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -62,4 +63,6 @@ class Operation
 
         return $this;
     }
+
+
 }

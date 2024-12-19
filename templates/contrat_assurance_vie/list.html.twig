@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contrats d'assurance vie{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="collapse-title text-xl font-medium">Liste des contrats d'assurance vie</div>
+
+<div class="overflow-x-auto">
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Numéro</th>
+            <th>Compagnie d'assurance</th>
+            <th>Solde</th>
+            <th>Date d'ouverture</th>
+            <th>Montant du versement libre</th>
+            <th>Périodicité du versement libre</th>
+            <th>Montant de la valeur latente</th>
+            <th>Total investi</th>
+            <th>Total Racheté</th>
+            <th>Mode de gestion</th>
+        </tr>
+    </thead>
+    <tbody>
+		{% for c in contrats %}
+		<tr class="hover">
+			<td>{{ c.nom }}</td>
+			<td>{{ c.numero}}</td>
+			<td>{{ c.compagnieAssurance.nom}}</td>
+			<td>{{ c.solde }}€</td>
+			<td>{{ c.dateOuverture|date('d/m/Y') }}</td>
+			<td>{{ c.montantVersementLibre}}€</td>
+			<td>{{ c.modeGestion.libelle}}</td>
+			<td>{{ c.montantValueLatente}}€</td>
+			<td>{{ c.totalInvestit}}€</td>
+			<td>{{ c.totalRachete}}€</td>
+			<td>{{ c.modeGestion.libelle}}</td>
+		</tr>
+	{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}

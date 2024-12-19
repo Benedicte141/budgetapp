@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des comptes de la banque {{banque.nom}}{% endblock %}
+
+{% block body %}
+
+{% block stylecheets %}
+<style>
+</style>
+{% endblock %}
+
+    <h1>Compte(s) de la banque {{banque.nom}}</h1>
+
+    <table>
+        <tr>
+            <th>Numéro du compte</th>
+            <th>Nom du compte</th>
+        </tr>
+        {% for c in comptes %}
+            <tr>
+                <td>{{c.numero}}</td>
+                <td>{{c.nom}}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>Aucun compte n'a été trouvé.</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ path('app_banque_list') }}">Retour à la liste des banques</a>
+{% endblock %}

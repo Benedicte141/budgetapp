@@ -45,8 +45,7 @@ class RegistrationFormType extends AbstractType
                     'Mr' => 'Mr',
                     'Non renseigné' => 'Non renseigné',
                 ],
-                'placeholder' => 'Choisissez votre civilité', // Optionnel : Ajoute une option par défaut vide
-                'expanded' => false, // Définit si les choix doivent être affichés en liste déroulante (false) ou en boutons radio (true)
+                'expanded' => true, // Définit si les choix doivent être affichés en liste déroulante (false) ou en boutons radio (true)
                 'multiple' => false, // Définit si plusieurs choix sont possibles (false pour un seul choix)
                 'constraints' => [
                     new NotBlank([

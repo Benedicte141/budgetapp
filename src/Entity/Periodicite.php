@@ -19,14 +19,14 @@ class Periodicite
     private ?string $libelle = null;
 
     /**
-     * @var Collection<int, Contrat>
+     * @var Collection<int, Emprunt>
      */
-    #[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'periodicite')]
-    private Collection $contrats;
+    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'periodicite', orphanRemoval: true)]
+    private Collection $emprunts;
 
     public function __construct()
     {
-        $this->contrats = new ArrayCollection();
+        $this->emprunts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,29 +47,29 @@ class Periodicite
     }
 
     /**
-     * @return Collection<int, Contrat>
+     * @return Collection<int, Emprunt>
      */
-    public function getContrats(): Collection
+    public function getEmprunts(): Collection
     {
-        return $this->contrats;
+        return $this->emprunts;
     }
 
-    public function addContrat(Contrat $contrat): static
+    public function addEmprunt(Emprunt $emprunt): static
     {
-        if (!$this->contrats->contains($contrat)) {
-            $this->contrats->add($contrat);
-            $contrat->setPeriodicite($this);
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts->add($emprunt);
+            $emprunt->setPeriodicite($this);
         }
 
         return $this;
     }
 
-    public function removeContrat(Contrat $contrat): static
+    public function removeEmprunt(Emprunt $emprunt): static
     {
-        if ($this->contrats->removeElement($contrat)) {
+        if ($this->emprunts->removeElement($emprunt)) {
             // set the owning side to null (unless already changed)
-            if ($contrat->getPeriodicite() === $this) {
-                $contrat->setPeriodicite(null);
+            if ($emprunt->getPeriodicite() === $this) {
+                $emprunt->setPeriodicite(null);
             }
         }
 

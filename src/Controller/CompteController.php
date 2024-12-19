@@ -21,12 +21,4 @@ class CompteController extends AbstractController
             'comptes' => $comptes,]);	
 	}
 
-    #[Route('/abonnement', name: 'app_abonnement_liste')]
-
-    public function listerAbonnements(EntityManagerInterface $entityManager){
-        $abonnements = $entityManager->getRepository(Abonnement::class)->findAll();
-
-        return $this->render('abonnement/lister.html.twig', [
-            'abonnements' => $abonnements,]);
-    }
 }

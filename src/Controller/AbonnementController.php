@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Abonnement;
 
-class CompteController extends AbstractController
+class AbonnementController extends AbstractController
 {
     #[Route('/abonnement', name: 'app_abonnement_liste')]
 

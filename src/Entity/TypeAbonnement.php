@@ -16,12 +16,12 @@ class TypeAbonnement
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom = null;
+    private ?string $nom = null;
 
     /**
      * @var Collection<int, Abonnement>
      */
-    #[ORM\OneToMany(targetEntity: Abonnement::class, mappedBy: 'typeAbonnement')]
+    #[ORM\OneToMany(targetEntity: Abonnement::class, mappedBy: 'type_abonnement')]
     private Collection $abonnements;
 
     public function __construct()
@@ -36,12 +36,12 @@ class TypeAbonnement
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }

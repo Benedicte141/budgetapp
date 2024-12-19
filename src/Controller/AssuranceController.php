@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contrat;
+use App\Form\AssuranceType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
@@ -18,6 +19,7 @@ class AssuranceController extends AbstractController
             'contrats' => $contrats,
         ]);
     }
+    #[Route('/contrat/form', name: 'app_lister_contrat')]
     public function ajouterContrat()
     {
         $contrat = new contrat();

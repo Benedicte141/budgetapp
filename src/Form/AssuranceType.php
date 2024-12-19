@@ -8,6 +8,7 @@ use App\Entity\Periodicite;
 use App\Entity\TypeContrat;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -34,6 +35,7 @@ class AssuranceType extends AbstractType
                 'class' => TypeContrat::class,
                 'choice_label' => 'id',
             ])
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau contrat'))
         ;
     }
 

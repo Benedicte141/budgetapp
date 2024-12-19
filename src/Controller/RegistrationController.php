@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -57,6 +58,43 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form,
         ]);
     }
+
+
+
+    #[Route('/modify', name: 'app_modify_infos_user')]
+    public function modify(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException('Vous devez être connecté pour modifier vos informations.');
+        }
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setNom($form->get('nom')->getData());
+            $user->setPrenom($form->get('prenom')->getData());
+            $user->setCivilite($form->get('civilite')->getData());
+            $user->setCp($form->get('cp')->getData());
+            $user->setPays($form->get('pays')->getData());
+            $user->setAdresse($form->get('adresse')->getData());
+            $user->setVille($form->get('ville')->getData());
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            
+            return $this->redirectToRoute('app_modify_infos_user');
+        }
+
+        return $this->render('registration/modify_user.html.twig', [
+            'modifyForm' => $form->createView(),
+        ]);
+    }
+
+
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response

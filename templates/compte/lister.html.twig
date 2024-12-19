@@ -54,11 +54,8 @@
 		{% for c in comptes %}
 		<tr>
 			<td>{{ c.nom }}</td>
-			<td>{{ c.numero('') }}</td>
-			<td>{{ c.solde}} €</td>
-	{% else %}
-		<tr>
-		<td>Aucun compte n'a été trouvé.</td>
+			<td>{{ c.numero}}</td>
+			<td>{{ c.solde}}€</td>
 		</tr>
 	{% endfor %}
 </table>

@@ -16,17 +16,17 @@ class Periodicite
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $libelle = null;
 
     /**
-     * @var Collection<int, Abonnement>
+     * @var Collection<int, Emprunt>
      */
-    #[ORM\OneToMany(targetEntity: Abonnement::class, mappedBy: 'periodicite')]
-    private Collection $abonnements;
+    #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'periodicite', orphanRemoval: true)]
+    private Collection $emprunts;
 
     public function __construct()
     {
-        $this->abonnements = new ArrayCollection();
+        $this->emprunts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,42 +34,42 @@ class Periodicite
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getLibelle(): ?string
     {
-        return $this->nom;
+        return $this->libelle;
     }
 
-    public function setNom(string $nom): static
+    public function setLibelle(string $libelle): static
     {
-        $this->nom = $nom;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Abonnement>
+     * @return Collection<int, Emprunt>
      */
-    public function getAbonnements(): Collection
+    public function getEmprunts(): Collection
     {
-        return $this->abonnements;
+        return $this->emprunts;
     }
 
-    public function addAbonnement(Abonnement $abonnement): static
+    public function addEmprunt(Emprunt $emprunt): static
     {
-        if (!$this->abonnements->contains($abonnement)) {
-            $this->abonnements->add($abonnement);
-            $abonnement->setPeriodicite($this);
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts->add($emprunt);
+            $emprunt->setPeriodicite($this);
         }
 
         return $this;
     }
 
-    public function removeAbonnement(Abonnement $abonnement): static
+    public function removeEmprunt(Emprunt $emprunt): static
     {
-        if ($this->abonnements->removeElement($abonnement)) {
+        if ($this->emprunts->removeElement($emprunt)) {
             // set the owning side to null (unless already changed)
-            if ($abonnement->getPeriodicite() === $this) {
-                $abonnement->setPeriodicite(null);
+            if ($emprunt->getPeriodicite() === $this) {
+                $emprunt->setPeriodicite(null);
             }
         }
 

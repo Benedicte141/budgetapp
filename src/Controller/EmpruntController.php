@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Emprunt;
+use App\Form\EmpruntType;
 
 class EmpruntController extends AbstractController
 {
@@ -20,6 +21,14 @@ class EmpruntController extends AbstractController
             'emprunts' => $emprunts,]);	
  
 	}
+    #[Route('/emprunt/ajouter', name: 'app_emprunt_ajouter')]  
+    public function ajouterEmprunt(){
+ 
+		$emprunt = new emprunt();
+		$form = $this->createForm(EmpruntType::class, $emprunt);
+                return $this->render('emprunt/ajouter.html.twig', array(
+                'form' => $form->createView(), ));
+    }
 }
 
 

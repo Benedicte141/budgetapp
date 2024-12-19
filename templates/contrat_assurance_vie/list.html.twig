@@ -8,10 +8,11 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Liste des contrats d'assurance vie</h1>
+<div class="collapse-title text-xl font-medium">Liste des contrats d'assurance vie</div>
 
-    <table>
+<div class="overflow-x-auto">
+    <table class="table">
+    <thead>
         <tr>
             <th>Nom</th>
             <th>Numéro</th>
@@ -25,8 +26,10 @@
             <th>Total Racheté</th>
             <th>Mode de gestion</th>
         </tr>
+    </thead>
+    <tbody>
 		{% for c in contrats %}
-		<tr>
+		<tr class="hover">
 			<td>{{ c.nom }}</td>
 			<td>{{ c.numero}}</td>
 			<td>{{ c.compagnieAssurance.nom}}</td>
@@ -40,6 +43,7 @@
 			<td>{{ c.modeGestion.libelle}}</td>
 		</tr>
 	{% endfor %}
+</tbody>
 </table>
 </div>
 {% endblock %}

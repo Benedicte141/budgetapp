@@ -15,9 +15,8 @@
 		{% for c in comptes %}
 		<tr>
 			<td>{{ c.nom }}</td>
-			<td>{{ c.nom }}</a></td>
-			<td>{{ c.numero('') }}</td>
-			<td>{{ c.solde('€')}}</td>
+			<td>{{ c.numero}}</td>
+			<td>{{ c.solde}}€</td>
 		</tr>
 	{% endfor %}
 </table>

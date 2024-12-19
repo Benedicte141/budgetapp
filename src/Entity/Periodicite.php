@@ -24,9 +24,16 @@ class Periodicite
     #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'periodicite', orphanRemoval: true)]
     private Collection $emprunts;
 
+    /**
+     * @var Collection<int, Contrat>
+     */
+    #[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'periodicite')]
+    private Collection $contrats;
+
     public function __construct()
     {
         $this->emprunts = new ArrayCollection();
+        $this->contrats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -63,13 +70,42 @@ class Periodicite
 
         return $this;
     }
-
     public function removeEmprunt(Emprunt $emprunt): static
     {
         if ($this->emprunts->removeElement($emprunt)) {
             // set the owning side to null (unless already changed)
             if ($emprunt->getPeriodicite() === $this) {
                 $emprunt->setPeriodicite(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contrat>
+     */
+    public function getContrats(): Collection
+    {
+        return $this->contrats;
+    }
+
+    public function addContrat(Contrat $contrat): static
+    {
+        if (!$this->contrats->contains($contrat)) {
+            $this->contrats->add($contrat);
+            $contrat->setPeriodicite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContrat(Contrat $contrat): static
+    {
+        if ($this->contrats->removeElement($contrat)) {
+            // set the owning side to null (unless already changed)
+            if ($contrat->getPeriodicite() === $this) {
+                $contrat->setPeriodicite(null);
             }
         }
 

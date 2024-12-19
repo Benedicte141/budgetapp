@@ -3,15 +3,54 @@
 {% block title %}Liste des comptes{% endblock %}
 
 {% block body %}
+
+{% block stylesheets %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+	body {
+		font-family: Arial, sans-serif;
+		background-color: white;
+		margin: 20px;
+	}
+	h1 {
+		text-align: center;
+		color: #333;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0;
+	}
+	table, th, td {
+		border: 1px solid #ddd;
+	}
+	th, td {
+		padding: flex;
+		text-align: center;
+	}
+	th {
+		background-color: #f4f4f4;
+	}
+	tr:nth-child(even){
+		background-color: #f9f9f9;
+	}
+	tr:hover {
+		background-color: #f1f1f1;
+	}
 </style>
+{% endblock %}
 
 <div class="example-wrapper">
     <h1>Liste des comptes </h1>
 
     <table>
+		<tr>
+			<th>Nom du compte</th>
+			<th>Numéro de compte</th>
+			<th>Solde</th>
+		</tr>
 		{% for c in comptes %}
 		<tr>
 			<td>{{ c.nom }}</td>

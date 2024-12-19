@@ -13,17 +13,17 @@
 
     <table>
         <tr>
-            <td>Nom</td>
-            <td>Numéro</td>
-            <td>Compagnie d'assurance</td>
-            <td>Solde</td>
-            <td>Date d'ouverture</td>
-            <td>Montant du versement libre</td>
-            <td>Périodicité du versement libre</td>
-            <td>Montant de la valeur latente</td>
-            <td>Total investi</td>
-            <td>Total Racheté</td>
-            <td>Mode de gestion</td>
+            <th>Nom</th>
+            <th>Numéro</th>
+            <th>Compagnie d'assurance</th>
+            <th>Solde</th>
+            <th>Date d'ouverture</th>
+            <th>Montant du versement libre</th>
+            <th>Périodicité du versement libre</th>
+            <th>Montant de la valeur latente</th>
+            <th>Total investi</th>
+            <th>Total Racheté</th>
+            <th>Mode de gestion</th>
         </tr>
 		{% for c in contrats %}
 		<tr>
@@ -33,7 +33,7 @@
 			<td>{{ c.solde }}€</td>
 			<td>{{ c.dateOuverture|date('d/m/Y') }}</td>
 			<td>{{ c.montantVersementLibre}}€</td>
-			<td>{{ c.periodicite.libelle}}</td>
+			<td>{{ c.modeGestion.libelle}}</td>
 			<td>{{ c.montantValueLatente}}€</td>
 			<td>{{ c.totalInvestit}}€</td>
 			<td>{{ c.totalRachete}}€</td>

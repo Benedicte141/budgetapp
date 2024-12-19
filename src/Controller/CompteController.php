@@ -21,4 +21,14 @@ class CompteController extends AbstractController
             'comptes' => $comptes,]);	
 	}
 
+    #[Route('/compte/consulter/{idCompte}', name: 'app_consulter_compte')]
+
+    public function consulterCompte(EntityManagerInterface $entityManager, $idCompte){
+        //$comptes= $doctrine->getRepository(Compte::class)->findAll();
+        $compte = $entityManager->getRepository(Compte::class)->find($idCompte);
+
+        return $this->render('compte/consulter.html.twig', [
+            'compte' => $compte,]);
+
+    }
 }

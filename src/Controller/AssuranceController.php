@@ -18,4 +18,11 @@ class AssuranceController extends AbstractController
             'contrats' => $contrats,
         ]);
     }
+    public function ajouterContrat()
+    {
+        $contrat = new contrat();
+        $form = $this->createForm(AssuranceType::class, $contrat);
+        return $this->render('assurance/ajouter.html.twig', array(
+            'form' => $form->createView(), ));
+    }
 }

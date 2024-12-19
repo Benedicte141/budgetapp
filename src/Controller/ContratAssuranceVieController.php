@@ -39,7 +39,7 @@ class ContratAssuranceVieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var string $plainPassword */
             $cav = $form->getData();
-            $entityManager->persist($user);
+            $entityManager->persist($cav);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_home');

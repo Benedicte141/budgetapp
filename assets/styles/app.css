@@ -18,3 +18,7 @@ tr{
 h1{
     @apply collapse-title text-xl font-medium;
 }
+
+button{
+    @apply btn
+}

@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContratAssuranceType extends AbstractType
 {
@@ -34,9 +35,8 @@ class ContratAssuranceType extends AbstractType
                 'class' => ModeGestion::class,
 'choice_label' => 'libelle',
             ])
-            ->add('periodicite', EntityType::class, [
-                'class' => Periodicite::class,
-'choice_label' => 'libelle',
+            ->add('submit', SubmitType::class, [
+                'label' => 'Creer',
             ])
         ;
     }

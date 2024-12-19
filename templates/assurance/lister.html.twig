@@ -11,7 +11,6 @@
     <div class="example-wrapper">
         <h2>Contrats d'assurance :</h2>
         <table border="1">
-            <table>
                 <thead>
                 <tr>
                     <th>Type</th>
@@ -26,13 +25,13 @@
                 <tbody>
                 {% for c in contrats %}
                     <tr>
-                        <td>{{ contrats.typeContrat.libelle }}</td>
-                        <td>{{ contrats.compagnie.libelle }}</td>
-                        <td>{{ contrats.num_client }}</td>
-                        <td>{{ contrats.date_sous }}</td>
-                        <td>{{ contrats.montant }}</td>
-                        <td>{{ contrats.periodicite.libelle }}</td>
-                        <td>{{ contrats.libelle_couverture }}</td>
+                        <td>{{ c.typeContrat.libelle }}</td>
+                        <td>{{ c.compagnie.libelle }}</td>
+                        <td>{{ c.numclient }}</td>
+                        <td>{{ c.datesous |date('d/m/Y') }}</td>
+                        <td>{{ c.montant }}</td>
+                        <td>{{ c.periodicite.libelle }}</td>
+                        <td>{{ c.libellecouverture }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

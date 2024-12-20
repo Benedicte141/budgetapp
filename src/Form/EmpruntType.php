@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class EmpruntType extends AbstractType
 {
@@ -38,6 +39,7 @@ class EmpruntType extends AbstractType
                 'class' => Banque::class,
                 'choice_label' => 'id',
             ])
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel emprunt'))
         ;
     }
 
@@ -47,4 +49,24 @@ class EmpruntType extends AbstractType
             'data_class' => Emprunt::class,
         ]);
     }
+//     public function ajouterEmprunt(Request $request, EntityManagerInterface $entityManager){
+    // $emprunt = new emprunt();
+	// $form = $this->createForm(EmpruntType::class, $emprunt);
+	// $form->handleRequest($request);
+
+// 	if ($form->isSubmitted() && $form->isValid()) {
+ 
+//             $etudiant = $form->getData();
+ 
+//             $entityManager = $doctrine->getManager();
+//             $entityManager->persist($etudiant);
+//             $entityManager->flush();
+ 
+// 	    return $this->render('etudiant/consulter.html.twig', ['etudiant' => $etudiant,]);
+// 	}
+// 	else
+//         {
+//             return $this->render('etudiant/ajouter.html.twig', array('form' => $form->createView(),));
+// 	}
+// }
 }

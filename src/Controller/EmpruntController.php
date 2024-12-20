@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Emprunt;
 use App\Form\EmpruntType;
+use Symfony\Component\HttpFoundation\Request;
+
+
 
 class EmpruntController extends AbstractController
 {
@@ -16,11 +19,9 @@ class EmpruntController extends AbstractController
     public function listerEmprunts(EntityManagerInterface $entityManager){
 		//$emprunts= $doctrine->getRepository(Emprunt::class)->findAll();
         $emprunts = $entityManager->getRepository(Emprunt::class)->findAll();
-
-		return $this->render('emprunt/lister.html.twig', [
-            'emprunts' => $emprunts,]);	
- 
-	}
+        return $this->render('emprunt/list.html.twig', ['emprunts' => $emprunts]);
+    }
+    
     #[Route('/emprunt/ajouter', name: 'app_emprunt_ajouter')]  
     public function ajouterEmprunt(){
  
@@ -30,6 +31,3 @@ class EmpruntController extends AbstractController
                 'form' => $form->createView(), ));
     }
 }
-
-
-

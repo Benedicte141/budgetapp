@@ -9,14 +9,13 @@
     {{ form_errors(modifyForm) }}
 
     {{ form_start(modifyForm) }}
-        {{ form_row(modifyForm.civilite) }}
+        {# {{ form_row(modifyForm.civilite) }}
         {{ form_row(modifyForm.nom) }}
         {{ form_row(modifyForm.prenom) }}
         {{ form_row(modifyForm.adresse) }}
         {{ form_row(modifyForm.cp) }}
         {{ form_row(modifyForm.ville) }}
         {{ form_row(modifyForm.pays) }}
-        {{ form_row(modifyForm.email) }}
-        <button type="submit" class="btn">Modifier</button>
+        {{ form_row(modifyForm.email) }} #}
     {{ form_end(modifyForm) }}
 {% endblock %}

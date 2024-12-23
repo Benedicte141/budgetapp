@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -38,6 +38,9 @@ class UserType extends AbstractType
             ->add('pays')
             ->add('email', null, [
                 'disabled'=>true
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Modifier',
             ])
         ;
     }

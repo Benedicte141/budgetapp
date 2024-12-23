@@ -16,7 +16,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
-
 class RegistrationController extends AbstractController
 {
     public function __construct(private EmailVerifier $emailVerifier)
@@ -75,13 +74,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user->setNom($form->get('nom')->getData());
-            $user->setPrenom($form->get('prenom')->getData());
-            $user->setCivilite($form->get('civilite')->getData());
-            $user->setCp($form->get('cp')->getData());
-            $user->setPays($form->get('pays')->getData());
-            $user->setAdresse($form->get('adresse')->getData());
-            $user->setVille($form->get('ville')->getData());
+            $user = $form->getData();
             $entityManager->persist($user);
             $entityManager->flush();
 

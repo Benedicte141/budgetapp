@@ -11,30 +11,31 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ContratAssuranceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('solde')
-            ->add('montantValueLatente')
-            ->add('totalInvestit')
+            ->add('nom')
             ->add('numero')
-            ->add('totalRachete')
+            ->add('solde')
             ->add('dateOuverture', null, [
                 'widget' => 'single_text'
             ])
-            ->add('montantVersementLibre')
-            ->add('nom')
             ->add('compagnie_assurance', EntityType::class, [
                 'class' => CompagnieAssurance::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
             ])
             ->add('mode_gestion', EntityType::class, [
                 'class' => ModeGestion::class,
-'choice_label' => 'libelle',
+                'choice_label' => 'libelle',
             ])
+            ->add('totalInvestit')
+            ->add('totalRachete')
+            ->add('montantValueLatente')
+            ->add('montantVersementLibre')
             ->add('submit', SubmitType::class, [
                 'label' => 'Creer',
             ])

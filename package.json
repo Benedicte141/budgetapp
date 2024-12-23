@@ -1,8 +1,11 @@
 {
   "devDependencies": {
-  "daisyui": "^4.12.14",
-  "tailwindcss": "^3.4.16",
-  "postcss": "^8.x",
-  "autoprefixer": "^10.x"
+    "autoprefixer": "^10.x",
+    "daisyui": "^4.12.14",
+    "postcss": "^8.x",
+    "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "tailwind-scrollbar": "^3.1.0"
   }
 }

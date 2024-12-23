@@ -10,7 +10,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('daisyui'), // Ajouter DaisyUI comme plugin
+    require('daisyui', require('tailwind-scrollbar')), // Ajouter DaisyUI comme plugin
   ],
 }
 

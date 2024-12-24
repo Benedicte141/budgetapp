@@ -49,24 +49,4 @@ class EmpruntType extends AbstractType
             'data_class' => Emprunt::class,
         ]);
     }
-//     public function ajouterEmprunt(Request $request, EntityManagerInterface $entityManager){
-    // $emprunt = new emprunt();
-	// $form = $this->createForm(EmpruntType::class, $emprunt);
-	// $form->handleRequest($request);
-
-// 	if ($form->isSubmitted() && $form->isValid()) {
- 
-//             $etudiant = $form->getData();
- 
-//             $entityManager = $doctrine->getManager();
-//             $entityManager->persist($etudiant);
-//             $entityManager->flush();
- 
-// 	    return $this->render('etudiant/consulter.html.twig', ['etudiant' => $etudiant,]);
-// 	}
-// 	else
-//         {
-//             return $this->render('etudiant/ajouter.html.twig', array('form' => $form->createView(),));
-// 	}
-// }
 }

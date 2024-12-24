@@ -8,23 +8,28 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Liste des emprunts </h1>
+<div class="collapse-title text-xl font-medium">Liste des emprunts</div>
 
-	<table border=1>
+<div class="overflow-x-auto">
+    <table class="table">
+    <thead>
 		<tr>
 			<th>Type d'emprunt</th>
 			<th>Banque</th>
+			<th>MontantInitial</th>
 			<th>Periodicité</th>
 			<th>Montant de l'échéance</th>
 			<th>Taux</th>
 			<th>Montant restant dû</th>
 		</tr>
+	</thead>
 
+	<tbody>
 		{% for e in emprunts %}
-			<tr>
+			<tr class="hover">
 				<td>{{ e.typeEmprunt.libelle}}</td>
 				<td>{{ e.banque.nom}}</td>
+				<td>{{e.montantInitial}}€</td>
 				<td>{{ e.periodicite.libelle}}</td>
 				<td>{{e.montantEcheance }}€</td>
 				<td>{{e.taux}}%</td>
@@ -33,7 +38,7 @@
 		{% else %}
 			<tr> Auncun emprunt n'a été trouvé</tr>
         {% endfor %}
+	</tbody>
 	</table>
-		
 </div>
 {% endblock %}

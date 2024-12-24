@@ -9,11 +9,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Emprunt;
 use App\Form\EmpruntType;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class EmpruntController extends AbstractController
 {
-    #[Route('/emprunt/lister', name: 'app_emprunt_list')]
+    #[Route('/emprunt/lister', name: 'app_emprunt_lister')]
     
     public function listerEmprunts(EntityManagerInterface $entityManager){
 		//$emprunts= $doctrine->getRepository(Emprunt::class)->findAll();
@@ -30,14 +31,16 @@ class EmpruntController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
  
+            
             $entityManager->persist($emprunt);
             $entityManager->flush();
 
-   	        return $this->render('emprunt/ajouter.html.twig', ['emprunt' => $emprunt,]);
+            $emprunts = $entityManager->getRepository(Emprunt::class)->findAll();
+            return $this->render('emprunt/lister.html.twig', ['emprunts' => $emprunts,]);
         }
         else
         {
-            return $this->render('emprunt/ajouter.html.twig', array('form' => $form->createView(), ));
+            return $this->render('emprunt/ajouter.html.twig', array('form' => $form->createView(),));
         }
     }
 }

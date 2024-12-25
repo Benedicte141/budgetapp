@@ -41,7 +41,11 @@
 			<td>{{ c.totalRachete}}€</td>
 			<td>{{ c.modeGestion.libelle}}</td>
 		</tr>
-	{% endfor %}
+        {% else %}
+            <td>Aucun contrat d'assurance vie n'a été trouvé.</td>
+	    {% endfor %}
     </tbody>
 </table>
+
+
 {% endblock %}

@@ -20,5 +20,29 @@ h1{
 }
 
 button{
-    @apply btn
+    @apply btn bg-base-content text-white
+}
+
+.join{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.joinDivSearch{
+    width:93%;
+}
+.indicator{
+    width:7%;
+}
+
+.indicator>button{
+    width:100%;
+}
+.joinDivSearch>div{
+    width:100%;
+}
+
+.joinDivSearch>div>input{
+    width:100%;
 }

@@ -8,30 +8,35 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+
     <h1>Liste des emprunts </h1>
 
-	<table border=1>
-		<tr>
-			<th>Type d'emprunt</th>
-			<th>Banque</th>
-			<th>Periodicité</th>
-			<th>Montant de l'échéance</th>
-			<th>Taux</th>
-			<th>Montant restant dû</th>
-		</tr>
-
-		{% for e in emprunts %}
+	<table>
+		<thead>
 			<tr>
-				<td>{{ e.typeEmprunt.libelle}}</td>
-				<td>{{ e.banque.nom}}</td>
-				<td>{{ e.periodicite.libelle}}</td>
-				<td>{{e.montantEcheance }}€</td>
-				<td>{{e.taux}}%</td>
-				<td>{{e.montantRestDu}}€</td>
+				<th>Type d'emprunt</th>
+				<th>Banque</th>
+				<th>Periodicité</th>
+				<th>Montant de l'échéance</th>
+				<th>Taux</th>
+				<th>Montant restant dû</th>
 			</tr>
-        {% endfor %}
+		</thead>
+		
+		<tbody>
+			{% for e in emprunts %}
+				<tr>
+					<td>{{ e.typeEmprunt.libelle}}</td>
+					<td>{{ e.banque.nom}}</td>
+					<td>{{ e.periodicite.libelle}}</td>
+					<td>{{e.montantEcheance }}€</td>
+					<td>{{e.taux}}%</td>
+					<td>{{e.montantRestDu}}€</td>
+				</tr>
+				{% else %}
+                    <td>Aucun emprunt n'a été trouvé.</td>
+			{% endfor %}
+		</tbody>
 	</table>
 		
-</div>
 {% endblock %}

@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EmpruntRepository::class)]
 class Emprunt
@@ -20,21 +21,30 @@ class Emprunt
     private ?float $montantInitial = null;
 
     #[ORM\Column]
+    #[Assert\LessThanOrEqual(propertyPath: 'montantInitial', message: 'Le montant de l\'échéance ne peut pas être supérieur au montant initial')]
     private ?float $montantEcheance = null;
 
     #[ORM\Column]
     private ?float $coutInteret = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\LessThanOrEqual(propertyPath: 'montantInitial', message: 'Le montant restant dû ne peut pas être supérieur au montant initial')]
     private ?float $montantRestDu = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\LessThan('today', message: 'La date ne peut pas être supérieure à la date du jour')]
     private ?\DateTimeInterface $dateDeb = null;
 
     #[ORM\Column]
     private ?float $taux = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'L\'objet doit contenir au moins 2 caractères',
+        maxMessage: 'L\'objet doit contenir au plus 50 caractères'
+    )]
     private ?string $objet = null;
 
     #[ORM\Column]

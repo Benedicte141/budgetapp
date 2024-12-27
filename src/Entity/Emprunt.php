@@ -46,7 +46,7 @@ class Emprunt
         maxMessage: 'L\'objet doit contenir au plus 50 caractères'
     )]
     private ?string $objet = null;
-
+    
     #[ORM\Column]
     private ?int $duree = null;
 

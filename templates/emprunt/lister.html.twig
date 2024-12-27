@@ -16,6 +16,7 @@
 		<tr>
 			<th>Type d'emprunt</th>
 			<th>Banque</th>
+			<th>Objet</th>
 			<th>MontantInitial</th>
 			<th>Periodicité</th>
 			<th>Montant de l'échéance</th>
@@ -29,6 +30,7 @@
 			<tr class="hover">
 				<td>{{ e.typeEmprunt.libelle}}</td>
 				<td>{{ e.banque.nom}}</td>
+				<td>{{ e.objet}}</td>
 				<td>{{e.montantInitial}}€</td>
 				<td>{{ e.periodicite.libelle}}</td>
 				<td>{{e.montantEcheance }}€</td>

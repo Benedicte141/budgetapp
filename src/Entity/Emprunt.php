@@ -42,11 +42,11 @@ class Emprunt
     #[Assert\Length(
         min: 3,
         max: 50,
-        minMessage: 'L\'objet doit contenir au moins 2 caractères',
+        minMessage: 'L\'objet doit contenir au moins 3 caractères',
         maxMessage: 'L\'objet doit contenir au plus 50 caractères'
     )]
-    private ?string $objet = null;
-    
+    private ?string $objet = "Emprunt modifié";
+
     #[ORM\Column]
     private ?int $duree = null;
 

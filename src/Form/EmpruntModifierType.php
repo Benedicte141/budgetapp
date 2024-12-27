@@ -18,7 +18,15 @@ class EmpruntModifierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('objet', TextType::class, array('label' => 'Objet de l\'emprunt', 'disabled' => true))
+            ->add('objet', TextType::class, array('label' => 'Objet de l\'emprunt', 'disabled' => true, 
+            'required' => false,
+            'empty_data' => function(FormInterface $form) {
+                $data = $form->getData();
+                //Conserver la valeur de l'objet de l'emprunt
+                return $data && $data->getField() !== null ? $data->getField() : 'Objet de l\'emprunt';
+                
+            }))
+            
             ->add('enregistrer', SubmitType::class, array('label' => 'Modifier l\'emprunt'))
             ;
     }
@@ -32,6 +40,9 @@ class EmpruntModifierType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Emprunt::class,
+            'attr' => [
+            'novalidate' => 'novalidate',
+            ],
         ]);
     }
 }

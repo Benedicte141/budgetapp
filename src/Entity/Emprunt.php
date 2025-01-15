@@ -39,6 +39,7 @@ class Emprunt
     private ?float $taux = null;
 
     #[ORM\Column(length: 255)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Assert\Length(
         min: 3,
         max: 50,

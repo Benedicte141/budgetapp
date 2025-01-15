@@ -51,7 +51,7 @@ class EmpruntController extends AbstractController
     {
     //récupération de l'emprunt dont l'id est passé en paramètre
     $emprunt = $entityManager->getRepository(Emprunt::class)->find($id);
-
+    
         if ($emprunt) {
             throw $this->createNotFoundException('Aucun emprunt trouvé pour cet id : '.$id);
          }
@@ -60,11 +60,13 @@ class EmpruntController extends AbstractController
             $form = $this->createForm(EmpruntModifierType::class, $emprunt);
             $form->handleRequest($request);
             
+                        
             if ($form->isSubmitted() && $form->isValid()) {
 
                 $emprunt = $form->getData();
                 $entityManager->persist($emprunt);
                 $entityManager->flush();
+               
 
                 $emprunts = $entityManager->getRepository(Emprunt::class)->findAll();
                 return $this->render('emprunt/lister.html.twig', ['emprunts' => $emprunts,]);

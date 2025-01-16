@@ -16,7 +16,7 @@
     <body >
         <div class="flex h-screen">
             <!-- Menu de navigation avec le nom de l'utilisateur -->
-            <nav class="bg-gray-100 flex-shrink-0 flex flex-col">
+            <nav class="bg-gray-100 flex-shrink-0 flex flex-col" id="menu_nav">
                 <div class="p-4">
                     <h1>Bonjour
                         {% if app.user %}
@@ -26,34 +26,34 @@
                         *{% endif %}</h1>
                 </div>
 
-                <ul class="mt-4 space-y-2">
+                <ul id="liste_menu">
                     <li>
-                        <a href="{{ path('app_compte_list') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_compte_list') }}" >
                             Comptes
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_emprunt_list') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_emprunt_list') }}" >
                             Emprunts
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_lister_contrat') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_lister_contrat') }}" >
                             Contrats d'assurance
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_contrat_assurance_vie_list') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_contrat_assurance_vie_list') }}" >
                             Contrats d'assurance vie
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_abonnement_liste') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_abonnement_liste') }}" >
                             Abonnements
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_abonnement_liste') }}" class="block py-2 px-4 rounded hover:bg-base-300">
+                        <a href="{{ path('app_abonnement_liste') }}" >
                             Opérations
                         </a>
                     </li>

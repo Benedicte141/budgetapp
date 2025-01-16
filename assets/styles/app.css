@@ -46,3 +46,11 @@ button{
 .joinDivSearch>div>input{
     width:100%;
 }
+
+#liste_menu{
+    @apply mt-4 space-y-2
+}
+
+#liste_menu>li>a{
+    @apply block py-2 px-4 rounded hover:bg-base-300
+}

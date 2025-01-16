@@ -46,13 +46,14 @@ class EmpruntController extends AbstractController
         }
     }
 
-    #[Route('/emprunt/modifier{id}', name: 'app_emprunt_modifier')]  
-    public function modifierEmprunt(Request $request, string $id, EntityManagerInterface $entityManager): Response
+    #[Route('/emprunt/modifier/{id}', name: 'app_emprunt_modifier')]  
+    public function modifierEmprunt(Request $request, $id, EntityManagerInterface $entityManager): Response
     {
     //récupération de l'emprunt dont l'id est passé en paramètre
     $emprunt = $entityManager->getRepository(Emprunt::class)->find($id);
+    //var_dump($emprunt);
     
-        if ($emprunt) {
+        if (! $emprunt) {
             throw $this->createNotFoundException('Aucun emprunt trouvé pour cet id : '.$id);
          }
         else
@@ -64,6 +65,7 @@ class EmpruntController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
 
                 $emprunt = $form->getData();
+                //$emprunt->setObjet('Emprunt modifié');
                 $entityManager->persist($emprunt);
                 $entityManager->flush();
                

@@ -28,11 +28,11 @@
 	<tbody>
 		{% for e in emprunts %}
 			<tr class="hover">
-				<td>{{ e.typeEmprunt.libelle}}</td>
-				<td>{{ e.banque.nom}}</td>
-				<td>{{ e.objet}}</td>
+				<td>{{e.typeEmprunt.libelle}}</td>
+				<td>{{e.banque.nom}}</td>
+				<td>{{e.objet}}</td>
 				<td>{{e.montantInitial}}€</td>
-				<td>{{ e.periodicite.libelle}}</td>
+				<td>{{e.periodicite.libelle}}</td>
 				<td>{{e.montantEcheance }}€</td>
 				<td>{{e.taux}}%</td>
 				<td>{{e.montantRestDu}}€</td>

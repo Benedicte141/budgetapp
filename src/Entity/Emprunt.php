@@ -46,7 +46,7 @@ class Emprunt
         minMessage: 'L\'objet doit contenir au moins 3 caractères',
         maxMessage: 'L\'objet doit contenir au plus 50 caractères'
     )]
-    private ?string $objet = "Emprunt modifié";
+    private ?string $objet = null;
 
     #[ORM\Column]
     private ?int $duree = null;

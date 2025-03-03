@@ -38,9 +38,16 @@ class Compte
     #[ORM\JoinColumn(nullable: false)]
     private ?TypeCompte $typeCompte = null;
 
+    /**
+     * @var Collection<int, ImportError>
+     */
+    #[ORM\OneToMany(targetEntity: ImportError::class, mappedBy: 'compte')]
+    private Collection $importErrors;
+
     public function __construct()
     {
         $this->operations = new ArrayCollection();
+        $this->importErrors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,6 +141,36 @@ class Compte
     public function setTypeCompte(?TypeCompte $typeCompte): static
     {
         $this->typeCompte = $typeCompte;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ImportError>
+     */
+    public function getImportErrors(): Collection
+    {
+        return $this->importErrors;
+    }
+
+    public function addImportError(ImportError $importError): static
+    {
+        if (!$this->importErrors->contains($importError)) {
+            $this->importErrors->add($importError);
+            $importError->setCompte($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImportError(ImportError $importError): static
+    {
+        if ($this->importErrors->removeElement($importError)) {
+            // set the owning side to null (unless already changed)
+            if ($importError->getCompte() === $this) {
+                $importError->setCompte(null);
+            }
+        }
 
         return $this;
     }

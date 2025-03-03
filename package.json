@@ -1,11 +1,19 @@
 {
   "devDependencies": {
+    "@symfony/webpack-encore": "^5.1.0",
     "autoprefixer": "^10.x",
     "daisyui": "^4.12.14",
     "postcss": "^8.x",
-    "tailwindcss": "^3.4.16"
+    "tailwindcss": "^3.4.16",
+    "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
+    "@symfony/stimulus-bundle": "^2.23.0",
     "tailwind-scrollbar": "^3.1.0"
+  },
+  "scripts": {
+    "dev": "encore dev",
+    "build": "encore production",
+    "watch": "encore dev --watch"
   }
 }

@@ -5,18 +5,20 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <link href="{{ asset('../assets/styles/output.css') }}" rel="stylesheet">
-        
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body >
         <div class="flex h-screen">
             <!-- Menu de navigation avec le nom de l'utilisateur -->
-            <nav class="bg-gray-100 flex-shrink-0 flex flex-col" id="menu_nav">
+            <nav class="bg-gray-100 flex-shrink-0 flex flex-col fixed top-0 left-0 h-full w-1/5" id="menu_nav">
                 <div class="p-4">
                     <h1>Bonjour
                         {% if app.user %}
@@ -70,9 +72,51 @@
             </nav>
 
             <!-- Contenu principal -->
-            <main class="flex-1 p-6">
+            <main class="flex-1 ml-[20%] p-6 overflow-y-auto">
                 {% block body %}{% endblock %}
             </main>
         </div>
     </body>
+    
+{# read and display just one flash message type #}
+{% for message in app.flashes('notice') %}
+<div class="flash-notice">
+    {{ message }}
+</div>
+{% endfor %}
+
+{# same but without clearing them from the flash bag #}
+{% for message in app.session.flashbag.peek('notice') %}
+<div class="flash-notice">
+    {{ message }}
+</div>
+{% endfor %}
+
+{# read and display several types of flash messages #}
+{% for label, messages in app.flashes(['success', 'warning']) %}
+{% for message in messages %}
+    <div class="flash-{{ label }}">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endfor %}
+
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+{% for message in messages %}
+    <div class="flash-{{ label }}">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endfor %}
+
+{# or without clearing the flash bag #}
+{% for label, messages in app.session.flashbag.peekAll() %}
+{% for message in messages %}
+    <div class="flash-{{ label }}">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endfor %}
+
 </html>

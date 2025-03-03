@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Importer des opérations{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1>Importer des opérations</h1>
+
+        {{ form_errors(importForm) }}
+        {{ form_start(importForm) }}
+        
+        {{ form_end(importForm) }}
+{% endblock %}

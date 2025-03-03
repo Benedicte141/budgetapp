@@ -3,10 +3,18 @@
 {% block title %}Vos informations{% endblock %}
 
 {% block body %}
+  
+
 
     <h1>Vos informations</h1>
     <h3>Consultez et modifiez vos informations si besoin!</h3>
-    {{ form_errors(modifyForm) }}
+
+        {% if modifyForm.vars.errors|length > 0 %}
+            <div class="alert alert-error mb-4">
+                {{ form_errors(modifyForm) }}
+            </div>
+        {% endif %}
+    {# {{ form_errors(modifyForm) }} #}
 
     {{ form_start(modifyForm) }}
         {# {{ form_row(modifyForm.civilite) }}

@@ -30,6 +30,9 @@ class Banque
     #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'banque', orphanRemoval: true)]
     private Collection $emprunts;
 
+    #[ORM\ManyToOne(inversedBy: 'banques')]
+    private ?BankApi $bank_api = null;
+
     public function __construct()
     {
         $this->comptes = new ArrayCollection();
@@ -109,6 +112,18 @@ class Banque
                 $emprunt->setBanque(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBankApi(): ?BankApi
+    {
+        return $this->bank_api;
+    }
+
+    public function setBankApi(?BankApi $bank_api): static
+    {
+        $this->bank_api = $bank_api;
 
         return $this;
     }

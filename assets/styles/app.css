@@ -19,6 +19,10 @@ h1{
     @apply collapse-title text-xl font-medium;
 }
 
+h3{
+    @apply collapse-title text-xl ;
+}
+
 button{
     @apply btn bg-base-content text-white
 }
@@ -28,6 +32,10 @@ button{
     align-items: center;
     justify-content: space-between;
 }
+/* 
+#menu_nav{
+    position: fixed;
+} */
 
 .joinDivSearch{
     width:93%;
@@ -54,3 +62,134 @@ button{
 #liste_menu>li>a{
     @apply block py-2 px-4 rounded hover:bg-base-300
 }
+
+
+form{
+    @apply p-6 bg-white rounded-lg shadow-md space-y-4 w-full max-w-lg mx-auto
+}
+
+form>div>label{
+    @apply block text-sm font-medium text-gray-700
+}
+
+form>div>div{
+    @apply flex space-x-4 mt-1
+}
+
+form>div>div>label{
+    @apply label cursor-pointer
+}
+
+form>div>div>label>input{
+    @apply radio radio-primary
+}
+
+form>div>div>label>span{
+    @apply ml-2
+}
+
+
+form > div:not(:has(button)) {
+    @apply border border-gray-300 p-4 rounded-md bg-white
+}
+
+form > div:has(button) {
+    @apply flex justify-center; /* Centre le bouton */
+}
+
+form{
+    @apply bg-base-200
+}
+
+
+form>div>label{
+    @apply text-lg font-semibold
+}
+
+form>div>input{
+    @apply input input-bordered w-full
+}
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: white;
+}
+
+table {
+    @apply table;
+}
+
+tr {
+    @apply hover;
+}
+
+h1 {
+    @apply collapse-title text-xl font-medium;
+}
+
+h3 {
+    @apply collapse-title text-xl;
+}
+
+button {
+    @apply btn bg-base-content text-white;
+}
+
+.join {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.joinDivSearch {
+    width: 93%;
+}
+
+.indicator {
+    width: 7%;
+}
+
+.indicator > button {
+    width: 100%;
+}
+
+.joinDivSearch > div {
+    width: 100%;
+}
+
+.joinDivSearch > div > input {
+    width: 100%;
+}
+
+#liste_menu {
+    @apply mt-4 space-y-2;
+}
+
+#liste_menu > li > a {
+    @apply block py-2 px-4 rounded hover:bg-base-300;
+}
+
+/* Partie fixe du menu */
+#menu_nav {
+    position: fixed; /* Fixe la partie gauche */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Prend toute la hauteur de la page */
+    width: 20%; /* Vous pouvez ajuster la largeur du menu */
+}
+
+/* Partie droite qui défile */
+main {
+    margin-left: 20%; /* Décale la partie droite pour ne pas se superposer à la gauche */
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto; /* Permet le défilement uniquement sur la partie droite */
+}
+
+

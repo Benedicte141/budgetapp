@@ -9,11 +9,15 @@
 </style>
 
 
-    <h1>Liste des emprunts </h1>
+<div class="align">
+<h1>Liste des emprunts </h1>
+<img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
+</div>
 
 	<table>
 		<thead>
 			<tr>
+				<th></th>
 				<th>Type d'emprunt</th>
 				<th>Banque</th>
 				<th>Periodicité</th>
@@ -26,6 +30,7 @@
 		<tbody>
 			{% for e in emprunts %}
 				<tr>
+					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
 					<td>{{ e.typeEmprunt.libelle}}</td>
 					<td>{{ e.banque.nom}}</td>
 					<td>{{ e.periodicite.libelle}}</td>

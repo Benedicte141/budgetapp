@@ -8,11 +8,15 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<h1 class="collapse-title text-xl font-medium">Liste des contrats d'assurance vie</h1>
+<div class="align">
+		<h1>Liste des contrats d'assurance vie </h1>
+		<img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Modifier le compte">
+	</div>
 
 <table>
     <thead>
         <tr>
+            <th></th>
             <th>Nom</th>
             <th>Numéro</th>
             <th>Compagnie d'assurance</th>
@@ -29,7 +33,8 @@
     <tbody>
 		{% for c in contrats %}
 		<tr>
-			<td>{{ c.nom }}</td>
+            <td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+            <td>{{ c.nom }}</td>
 			<td>{{ c.numero}}</td>
 			<td>{{ c.compagnieAssurance.nom}}</td>
 			<td>{{ c.solde }}€</td>

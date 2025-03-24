@@ -5,10 +5,14 @@
 {% block body %}
     
     <div>
-        <h1>Contrats d'assurance :</h1>
+        <div class="align">
+		<h1>Liste des contrats d'assurance </h1>
+		<img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Modifier le compte">
+	</div>
         <table border="1">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Type</th>
                     <th>Compagnie</th>
                     <th>Numéro client</th>
@@ -21,6 +25,7 @@
                 <tbody>
                 {% for c in contrats %}
                     <tr>
+					    <td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
                         <td>{{ c.typeContrat.libelle }}</td>
                         <td>{{ c.compagnie.libelle }}</td>
                         <td>{{ c.numclient }}</td>

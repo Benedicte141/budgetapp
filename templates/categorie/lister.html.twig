@@ -9,13 +9,17 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Liste les catégories </h1>
+<div class="align">
+<h1>Liste des catégories </h1>
+<img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
+</div>
 
 		 {% for c in categories %}
             {{c.libelle}}
             <table border=1>
                 {%for sc in c.sousCategories %}
             <tr>
+				<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
                 <td>{{sc.libelle}}</td>
                 <td>{{sc.budgetAnnuel}}€</td>
                 <td>{{sc.budgetMensuel}}€</td>

@@ -25,7 +25,7 @@
                             {{ app.user.prenom }}!
                         {% else %}
                             Invité
-                        *{% endif %}</h1>
+                        {% endif %}</h1>
                 </div>
 
                 <ul id="liste_menu">
@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('app_abonnement_liste') }}" >
+                        <a href="{{ path('app_operation_liste') }}" >
                             Opérations
                         </a>
                     </li>

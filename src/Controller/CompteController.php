@@ -18,7 +18,7 @@ class CompteController extends AbstractController
         $comptes = $entityManager->getRepository(Compte::class)->findAll();
 
 		return $this->render('compte/lister.html.twig', [
-            'comptes' => $comptes,]);	
+            'comptes' => $comptes]);	
 	}
 
     #[Route('/compte/consulter/{idCompte}', name: 'app_consulter_compte')]

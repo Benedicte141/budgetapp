@@ -5,7 +5,10 @@
 {% block body %}
 
 
-        <h1>Lister les abonnements</h1>
+        <div class="align">
+            <h1>Liste des abonnements </h1>
+            <img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
+        </div>
         <div class="join">
             <div class="joinDivSearch">
               <div>
@@ -19,6 +22,7 @@
         <table>
             <thead>
                 <tr>
+                    <th></th>
                     <th>Organisme</th>
                     <th>Abonnement</th>
                     <th>N° Client</th>
@@ -31,6 +35,7 @@
             <tbody>
                 {% for a in abonnements %}
                 <tr>
+					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
                     <td>{{ a.organisme.nom }}</td>
                     <td>{{ a.TypeAbonnement.nom }}</td>
                     <td>{{ a.numeroClient }}</td>

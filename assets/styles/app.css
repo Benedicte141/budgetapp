@@ -14,6 +14,19 @@ tr{
     @apply hover;
 
 }
+td {
+    min-width: 50px !important;
+}
+
+.align{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.align>h1{
+    width:auto;
+}
 
 h1{
     @apply collapse-title text-xl font-medium;
@@ -63,7 +76,6 @@ button{
     @apply block py-2 px-4 rounded hover:bg-base-300
 }
 
-
 form{
     @apply p-6 bg-white rounded-lg shadow-md space-y-4 w-full max-w-lg mx-auto
 }
@@ -111,7 +123,14 @@ form>div>input{
 }
 
 
+.IMG_PLUS{
+    width: 2%;
+    height: 2%;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 0.5%;
 
+}
 
 @tailwind base;
 @tailwind components;

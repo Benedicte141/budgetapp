@@ -30,7 +30,10 @@
 		<tbody>
 			{% for e in emprunts %}
 				<tr>
-					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					<td class = "IMGS_OPERATION">
+						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+					</td>
 					<td>{{ e.typeEmprunt.libelle}}</td>
 					<td>{{ e.banque.nom}}</td>
 					<td>{{ e.periodicite.libelle}}</td>

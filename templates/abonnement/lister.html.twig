@@ -35,7 +35,10 @@
             <tbody>
                 {% for a in abonnements %}
                 <tr>
-					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					<td class = "IMGS_OPERATION">
+						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+					</td>
                     <td>{{ a.organisme.nom }}</td>
                     <td>{{ a.TypeAbonnement.nom }}</td>
                     <td>{{ a.numeroClient }}</td>

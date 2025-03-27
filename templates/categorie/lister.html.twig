@@ -19,8 +19,10 @@
             <table border=1>
                 {%for sc in c.sousCategories %}
             <tr>
-				<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
-                <td>{{sc.libelle}}</td>
+                <td class = "IMGS_OPERATION">
+                    <img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+                    <img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+                </td><td>{{sc.libelle}}</td>
                 <td>{{sc.budgetAnnuel}}€</td>
                 <td>{{sc.budgetMensuel}}€</td>
             </tr>

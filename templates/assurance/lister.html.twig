@@ -25,7 +25,10 @@
                 <tbody>
                 {% for c in contrats %}
                     <tr>
-					    <td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					    <td class = "IMGS_OPERATION">
+                            <img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+                            <img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+                        </td>
                         <td>{{ c.typeContrat.libelle }}</td>
                         <td>{{ c.compagnie.libelle }}</td>
                         <td>{{ c.numclient }}</td>

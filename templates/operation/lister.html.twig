@@ -30,7 +30,10 @@
 		<tbody>
 			{% for o in operations %}
 				<tr>
-					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					<td class = "IMGS_OPERATION">
+						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+					</td>
 					<td>{{ o.compte.nom }} - {{ o.compte.numero}}</td>
 					<td>{{ o.montant}} €</td>
 					<td>{{ o.libelle}}</td>

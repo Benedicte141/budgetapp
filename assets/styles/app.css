@@ -15,7 +15,7 @@ tr{
 
 }
 td {
-    min-width: 50px !important;
+    min-width: 100px !important;
 }
 
 .align{
@@ -130,6 +130,15 @@ form>div>input{
     border-radius: 10px;
     padding: 0.5%;
 
+}
+
+.IMGS_OPERATION{
+    display:flex;
+    flex-direction: row;
+}
+
+.IMGS_OPERATION>img{
+    margin:10px;
 }
 
 @tailwind base;

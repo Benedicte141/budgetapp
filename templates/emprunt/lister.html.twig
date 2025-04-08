@@ -30,7 +30,7 @@
 		<tbody>
 			{% for e in emprunts %}
 				<tr>
-					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					<td><a href="{{ path('app_consulter_emprunt', {'idEmprunt': e.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier l'emprunt"></a></td>
 					<td>{{ e.typeEmprunt.libelle}}</td>
 					<td>{{ e.banque.nom}}</td>
 					<td>{{ e.periodicite.libelle}}</td>

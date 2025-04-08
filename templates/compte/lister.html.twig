@@ -29,7 +29,7 @@
 		<tbody>
 			{% for c in comptes %}
 				<tr>
-					<td><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></td>
+					<td><a href="{{ path('app_consulter_compte', {'idCompte': c.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier le compte"></a></td>
 					<td>{{ c.nom }}</td>
 					<td>{{ c.numero}}</td>
 					<td>{{ c.solde}}€</td>

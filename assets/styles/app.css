@@ -80,8 +80,15 @@ form{
     @apply p-6 bg-white rounded-lg shadow-md space-y-4 w-full max-w-lg mx-auto
 }
 
+form{
+    font-size:0.875rem !important;
+}
 form>div>label{
-    @apply block text-sm font-medium text-gray-700
+    font-size:0.875rem !important;
+}
+
+form>div>label{
+    @apply block text-sm text-gray-700
 }
 
 form>div>div{
@@ -115,11 +122,16 @@ form{
 
 
 form>div>label{
-    @apply text-lg font-semibold
+    @apply text-lg
 }
 
 form>div>input{
     @apply input input-bordered w-full
+}
+
+form>div>input{
+
+    font-size:0.875rem !important;
 }
 
 

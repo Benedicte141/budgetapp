@@ -24,12 +24,6 @@ class Periodicite
     #[ORM\OneToMany(targetEntity: Emprunt::class, mappedBy: 'periodicite', orphanRemoval: true)]
     private Collection $emprunts;
 
-        /**
-     * @var Collection<int, Abonnement>
-     */
-    #[ORM\OneToMany(targetEntity: Abonnement::class, mappedBy: 'periodicite', orphanRemoval: true)]
-    private Collection $abonnements;
-
     /**
      * @var Collection<int, Contrat>
      */

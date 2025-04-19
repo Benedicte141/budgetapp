@@ -13,7 +13,7 @@ use App\Form\EmpruntType;
 
 class EmpruntController extends AbstractController
 {
-    #[Route('/emprunt/list', name: 'app_emprunt_list')]
+    #[Route('/emprunt/list', name: 'app_emprunt_lister')]
     
     public function listerEmprunts(EntityManagerInterface $entityManager){
 		//$emprunts= $doctrine->getRepository(Emprunt::class)->findAll();

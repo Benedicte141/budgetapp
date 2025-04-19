@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BanqueController extends AbstractController
 {
-    #[Route('/banque', name: 'app_banque_list')]
+    #[Route('/banque', name: 'app_banque_lister')]
     // public function index(): Response
     // {
     //     return $this->render('banque/index.html.twig', [

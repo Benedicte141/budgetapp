@@ -3,7 +3,7 @@
 {% block title %}Compte{% endblock %}
 
 {% block body %}
-    <h1>Compte {{ compte.nom }}</h1>
+    <h1>Emprunt {{ emprunt.objet }}</h1>
 
         {% if modifyForm.vars.errors|length > 0 %}
             <div class="alert alert-error mb-4">
@@ -13,7 +13,7 @@
     {{ form_start(modifyForm) }}
     {{ form_end(modifyForm) }}
     
-    <h1>Opérations</h1>
+    {# <h1>Opérations</h1>
 
 
     <table>
@@ -40,5 +40,5 @@
 			{% endfor %}
 		</tbody>
 		
-	</table>
+	</table> #}
 {% endblock %}

@@ -30,9 +30,9 @@
 			{% for c in comptes %}
 				<tr>
 					<td class = "IMGS_OPERATION">
-						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
+						<a href="{{ path('app_consulter_compte', {'idCompte': c.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
 						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
-					</td>
+					</a></td>
 					<td>{{ c.nom }}</td>
 					<td>{{ c.numero}}</td>
 					<td>{{ c.solde}}€</td>

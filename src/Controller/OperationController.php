@@ -18,7 +18,7 @@ class OperationController extends AbstractController
         ]);
     }
 
-    #[Route('/operation/list ', name: 'app_operation_liste')]
+    #[Route('/operation/list ', name: 'app_operation_lister')]
     public function list(EntityManagerInterface $entityManager): Response
     {
         $operations = $entityManager->getRepository(Operation::class)->findAll();

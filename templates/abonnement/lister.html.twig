@@ -7,9 +7,9 @@
 
         <div class="align">
             <h1>Liste des abonnements </h1>
-            <img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
+		    <a href="{{ path('app_create_abonnement') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer un abonnement"></a>
         </div>
-        <div class="join">
+        {# <div class="join">
             <div class="joinDivSearch">
               <div>
                 <input class="input input-bordered join-item" placeholder="Search" />
@@ -18,13 +18,13 @@
             <div class="indicator">
               <button class="btn join-item">Search</button>
             </div>
-        </div>
+        </div> #}
         <table>
             <thead>
                 <tr>
                     <th></th>
                     <th>Organisme</th>
-                    <th>Abonnement</th>
+                    <th>Type d'abonnement</th>
                     <th>N° Client</th>
                     <th>Date souscription</th>
                     <th>Montant</th>
@@ -36,8 +36,8 @@
                 {% for a in abonnements %}
                 <tr>
 					<td class = "IMGS_OPERATION">
-						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
-						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+						<a href="{{ path('app_consulter_abonnement', {'idAbonnement': a.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier l'abonnement'"></a>
+						<a href="{{ path('app_delete_abonnement', {'idAbonnement': a.id}) }}"><img src={{ asset('images/bin.png') }} alt="Supprimer l'abonnement"></a>
 					</td>
                     <td>{{ a.organisme.nom }}</td>
                     <td>{{ a.TypeAbonnement.nom }}</td>

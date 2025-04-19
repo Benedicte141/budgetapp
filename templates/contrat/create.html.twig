@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block body %}
+
+    <h1>Créer un contrat</h1>
+    {{ form_errors(creationForm) }}
+    {{ form_start(creationForm) }}
+    
+    {{ form_end(creationForm) }}
+{% endblock %}

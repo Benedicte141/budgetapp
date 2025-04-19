@@ -40,7 +40,7 @@ class UserType extends AbstractType
                 'disabled'=>true
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Modifier',
+                'label' => 'Submit',
             ])
         ;
     }

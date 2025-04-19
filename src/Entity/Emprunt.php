@@ -28,7 +28,7 @@ class Emprunt
     #[ORM\Column(nullable: true)]
     private ?float $montantRestDu = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateDeb = null;
 
     #[ORM\Column]

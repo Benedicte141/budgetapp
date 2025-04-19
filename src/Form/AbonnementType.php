@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\CompagnieAssurance;
-use App\Entity\ContratAssuranceVie;
-use App\Entity\ModeGestion;
+use App\Entity\Organisme;
+use App\Entity\Abonnement;
+use App\Entity\TypeAbonnement;
 use App\Entity\Periodicite;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -13,31 +13,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
-class ContratAssuranceType extends AbstractType
+class AbonnementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('numero')
-            ->add('solde')
-            ->add('dateOuverture', null, [
-                'widget' => 'single_text'
-            ])
-            ->add('compagnie_assurance', EntityType::class, [
-                'class' => CompagnieAssurance::class,
+            ->add('organisme', EntityType::class, [
+                'class' => Organisme::class,
                 'choice_label' => 'nom',
             ])
-            ->add('mode_gestion', EntityType::class, [
-                'class' => ModeGestion::class,
+            ->add('type_abonnement', EntityType::class, [
+                'class' => TypeAbonnement::class,
+                'choice_label' => 'nom',
+            ])
+            ->add('objet')
+            ->add('montant')
+            ->add('periodicite', EntityType::class, [
+                'class' => Periodicite::class,
                 'choice_label' => 'libelle',
             ])
-            ->add('totalInvestit')
-            ->add('totalRachete')
-            ->add('montantValueLatente')
-            ->add('montantVersementLibre')
+            ->add('numero_client')
+            ->add('date_souscription')
             ->add('submit', SubmitType::class, [
-                'label' => 'Creer',
+                'label' => 'Submit',
             ])
         ;
     }
@@ -45,7 +43,7 @@ class ContratAssuranceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ContratAssuranceVie::class,
+            'data_class' => Abonnement::class,
         ]);
     }
 }

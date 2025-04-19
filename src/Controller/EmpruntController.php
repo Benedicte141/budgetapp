@@ -58,7 +58,41 @@ class EmpruntController extends AbstractController
     }
 
 
-    #
+    #[Route('/emprunt/create', name: 'app_create_emprunt')]
+    public function createEmprunt(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $e = new Emprunt();
+        $form = $this->createForm(EmpruntType::class, $e);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var string $plainPassword */
+            $e = $form->getData();
+            $entityManager->persist($e);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_emprunt_list');
+        }
+
+        return $this->render('emprunt/create.html.twig', [
+            'creationForm' => $form,
+        ]);
+    }
+
+    
+    #[Route('/emprunt/delete/{idEmprunt}', name: 'app_delete_emprunt')]
+    public function deleteCompte(Request $request, EntityManagerInterface $entityManager, $idEmprunt)
+    {
+        $c = $entityManager->getRepository(Emprunt::class)->find($idEmprunt);
+        if (!$c) {
+            return $this->redirectToRoute('app_emprunt_list');
+        }
+
+        $entityManager->remove($c);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_emprunt_list');
+    }
 }
 
 

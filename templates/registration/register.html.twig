@@ -29,9 +29,23 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+<div>
+    <label class="flex items-center space-x-2">
+        {{ form_widget(registrationForm.agreeTerms, { attr: { class: 'checkbox checkbox-primary' } }) }}
+        <span>J'accepte les conditions d'utilisation</span>
+    </label>
+    {{ form_errors(registrationForm.agreeTerms) }}
+</div>
 
-        {{ form_row(registrationForm.agreeTerms) }}
+<div class="flex justify-center mt-4">
+<button
+  type="submit"
+  class="w-1/2 text-white bg-gray-900 hover:bg-gray-800 border border-gray-600 py-2 px-4 rounded-md transition"
+>
+    S'inscrire
+</button>
+</div>
+    {{ form_rest(registrationForm) }}
 
-        <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

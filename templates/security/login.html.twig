@@ -11,6 +11,12 @@
         display:none
     }
 </style>
+    {% for flash_success in app.flashes('success') %}
+    <div class="alert alert-success mb-4 max-w-lg mx-auto text-center">
+        {{ flash_success }}
+   </div>
+   {% endfor %}
+
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -24,9 +30,9 @@
 
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+        <input type="email" value="{{ last_username }}" name="email" id="username" class="form-control" autocomplete="email" required autofocus>
         <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+        <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" required>
         <input type="hidden" name="_csrf_token"
                value="{{ csrf_token('authenticate') }}"
         >
@@ -42,7 +48,7 @@
         #}
 
         <button type="submit">
-            Sign in
+            Se connecter
         </button>
     </form>
 {% endblock %}

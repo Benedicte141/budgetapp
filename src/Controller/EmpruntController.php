@@ -71,7 +71,7 @@ class EmpruntController extends AbstractController
             $entityManager->persist($e);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_emprunt_list');
+            return $this->redirectToRoute('app_emprunt_lister');
         }
 
         return $this->render('emprunt/create.html.twig', [
@@ -85,13 +85,13 @@ class EmpruntController extends AbstractController
     {
         $c = $entityManager->getRepository(Emprunt::class)->find($idEmprunt);
         if (!$c) {
-            return $this->redirectToRoute('app_emprunt_list');
+            return $this->redirectToRoute('app_emprunt_lister');
         }
 
         $entityManager->remove($c);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_emprunt_list');
+        return $this->redirectToRoute('app_emprunt_lister');
     }
 }
 

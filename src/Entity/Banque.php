@@ -18,6 +18,15 @@ class Banque
     #[ORM\Column(length: 30)]
     private ?string $nom = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(type: 'string', length: 5, nullable: true)]
+    private ?string $cp = null;
+
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private ?string $ville = null;
+
     /**
      * @var Collection<int, Compte>
      */
@@ -52,6 +61,41 @@ class Banque
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): static
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): static
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
 
         return $this;
     }

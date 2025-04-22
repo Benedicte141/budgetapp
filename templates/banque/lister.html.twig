@@ -1,34 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lister les banques{% endblock %}
+{% block title %}Liste des banques{% endblock %}
 
 {% block body %}
 
 
-<div class="example-wrapper">
-<div class="align">
-<h1>Liste des banques </h1>
-<img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
-</div>
-    <a href="{{path('app_banque_ajouter')}}" class="btn btn-primary"> Ajouter une banque</a>
-    <table>
-        <tr>
-            <th></th>
-            <th>Nom de la banque</th>
-        </tr>
-        {% for b in banques %}
-        <tr>
-            <td class = "IMGS_OPERATION">
-                <img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
-                <img src={{ asset('images/bin.png') }} alt="Modifier le compte">
-            </td>
-            <td><a href="{{path('app_banque_details', { id: b.id }) }}">{{ b.nom }}</td>
-        {% else %}
-            <tr>
-            <td>Aucune banque n'a été trouvée.</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-
+        <div class="align">
+            <h1>Liste des banques </h1>
+		    <a href="{{ path('app_create_banque') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer une banque"></a>
+        </div>
+        {# <div class="join">
+            <div class="joinDivSearch">
+              <div>
+                <input class="input input-bordered join-item" placeholder="Search" />
+              </div>
+            </div>
+            <div class="indicator">
+              <button class="btn join-item">Search</button>
+            </div>
+        </div> #}
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in banques %}
+                <tr>
+					<td class = "IMGS_OPERATION">
+						<a href="{{ path('app_consulter_banque', {'idBanque': b.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier la banque'"></a>
+						<a href="{{ path('app_delete_banque', {'idBanque':b.id}) }}"><img src={{ asset('images/bin.png') }} alt="Supprimer la banque"></a>
+					</td>
+                    <td>{{ b.nom }}</td>
+                    <td>{{ b.adresse }}</td>
+                    <td>{{ b.cp }}</td>
+                    <td>{{ b.ville }}</td>
+                </tr>
+                {% else %}
+                    <td>Aucune banque n'a été trouvé.</td>
+                {% endfor %}
+            </tbody>
+        </table>
 {% endblock %}

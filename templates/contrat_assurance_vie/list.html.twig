@@ -9,9 +9,9 @@
 </style>
 
 <div class="align">
-		<h1>Liste des contrats d'assurance vie </h1>
-		<img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Modifier le compte">
-	</div>
+	<h1>Liste des contrats d'assurance vie </h1>
+	<a href="{{ path('app_create_contrat_assurance_vie') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer un contrat d'assurance vie"></a>
+</div>
 
 <table>
     <thead>
@@ -34,8 +34,8 @@
 		{% for c in contrats %}
 		<tr>
             <td class = "IMGS_OPERATION">
-                <img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
-                <img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+				<a href="{{ path('app_consulter_contrat_assurance_vie', {'idContratAssuranceVie': c.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier le contrat d'assurance vie"></a>
+				<a href="{{ path('app_delete_contrat_assurance_vie', {'idContratAssuranceVie': c.id}) }}"><img src={{ asset('images/bin.png') }} alt="Supprimer le contrat d'assurance vie"></a>
             </td>
             <td>{{ c.nom }}</td>
 			<td>{{ c.numero}}</td>

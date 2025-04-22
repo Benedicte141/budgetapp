@@ -2,46 +2,40 @@
 
 namespace App\Form;
 
-use App\Entity\Emprunt;
-use App\Entity\Banque;
+use App\Entity\Compagnie;
+use App\Entity\Contrat;
 use App\Entity\Periodicite;
-use App\Entity\TypeEmprunt;
+use App\Entity\TypeContrat;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-class EmpruntType extends AbstractType
+
+class ContratType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('objet')
-            ->add('banque', EntityType::class, [
-                'class' => Banque::class,
-                'choice_label' => 'nom',
+            ->add('libelle_couverture')
+            ->add('montant')
+            ->add('num_client')
+            ->add('date_sous', null, [
+                'widget' => 'single_text'
             ])
-            ->add('montant_initial')
-            ->add('taux')
-            ->add('date_deb', DateType::class, [
-                'widget' => 'single_text', // Très utile pour lier le champ à un DateTime
-                'html5' => true
+            ->add('compagnie', EntityType::class, [
+                'class' => Compagnie::class,
+                'choice_label' => 'libelle',
             ])
-            ->add('duree')
             ->add('periodicite', EntityType::class, [
                 'class' => Periodicite::class,
                 'choice_label' => 'libelle',
             ])
-            ->add('type_emprunt', EntityType::class, [
-                'class' => TypeEmprunt::class,
+            ->add('typeContrat', EntityType::class, [
+                'class' => TypeContrat::class,
                 'choice_label' => 'libelle',
             ])
-            ->add('montant_rest_du')
-            ->add('montant_echeance')
-            ->add('cout_interet')
-            
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
             ])
@@ -51,7 +45,7 @@ class EmpruntType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Emprunt::class,
+            'data_class' => Contrat::class,
         ]);
     }
 }

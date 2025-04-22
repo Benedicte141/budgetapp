@@ -57,4 +57,43 @@ class CompteController extends AbstractController
         ]);
 
     }
+
+
+    #[Route('/compte/create', name: 'app_create_compte')]
+    public function createCompte(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $cav = new Compte();
+        $form = $this->createForm(CompteType::class, $cav);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var string $plainPassword */
+            $cav = $form->getData();
+            $entityManager->persist($cav);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_compte_list');
+        }
+
+        return $this->render('compte/create.html.twig', [
+            'creationForm' => $form,
+        ]);
+    }
+
+
+    #[Route('/compte/delete/{idCompte}', name: 'app_delete_compte')]
+    public function deleteCompte(Request $request, EntityManagerInterface $entityManager, $idCompte)
+    {
+        $c = $entityManager->getRepository(Compte::class)->find($idCompte);
+        if (!$c) {
+            return $this->redirectToRoute('app_compte_list');
+        }
+
+        $entityManager->remove($c);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_compte_list');
+    }
+
+
 }

@@ -13,7 +13,7 @@
 
     <div class="align">
 		<h1>Liste des opérations </h1>
-		<img src={{ asset('images/plus.png') }} alt="Modifier le compte">
+	    <a href="{{ path('app_create_operation') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer un operation"></a>
 	</div>
 	
 	
@@ -31,8 +31,8 @@
 			{% for o in operations %}
 				<tr>
 					<td class = "IMGS_OPERATION">
-						<img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
-						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
+				        <a href="{{ path('app_consulter_operation', {'idOperation': o.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier l'opération"></a>
+						<a href="{{ path('app_delete_operation', {'idOperation': o.id}) }}"><img src={{ asset('images/bin.png') }} alt="Supprimer l'opération"></a>
 					</td>
 					<td>{{ o.compte.nom }} - {{ o.compte.numero}}</td>
 					<td>{{ o.montant}} €</td>

@@ -142,12 +142,11 @@ input[type="checkbox"] {
 
 
 .IMG_PLUS{
-    width: 2%;
-    height: 2%;
+    width: 20px;
+    height: 20px;
     background-color: #000000;
     border-radius: 10px;
-    padding: 0.5%;
-
+    padding: 3px;
 }
 
 .IMGS_OPERATION{
@@ -155,7 +154,7 @@ input[type="checkbox"] {
     flex-direction: row;
 }
 
-.IMGS_OPERATION>img{
+.IMGS_OPERATION>img, .IMGS_OPERATION>a{
     margin:10px;
 }
 

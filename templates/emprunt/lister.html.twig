@@ -10,20 +10,23 @@
 
 
 <div class="align">
-<h1>Liste des emprunts </h1>
-<img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
+	<h1>Liste des emprunts </h1>
+	<a href="{{ path('app_create_emprunt') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer un emprunt"></a>
 </div>
 
 	<table>
 		<thead>
 			<tr>
 				<th></th>
+				<th>Objet</th>
 				<th>Type d'emprunt</th>
 				<th>Banque</th>
 				<th>Periodicité</th>
 				<th>Montant de l'échéance</th>
 				<th>Taux</th>
 				<th>Montant restant dû</th>
+				<th>Date de Début</th>
+				<th>Durée (mois)</th>
 			</tr>
 		</thead>
 		
@@ -31,15 +34,18 @@
 			{% for e in emprunts %}
 				<tr>
 					<td class = "IMGS_OPERATION">
-						<a href="{{ path('app_consulter_emprunt', {'idEmprunt': e.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier l'emprunt">
-						<img src={{ asset('images/bin.png') }} alt="Modifier le compte">
-					</a></td>
+						<a href="{{ path('app_consulter_emprunt', {'idEmprunt': e.id}) }}"><img src={{ asset('images/pencil.png') }} alt="Modifier l'emprunt"></a>
+						<a href="{{ path('app_delete_emprunt', {'idEmprunt': e.id}) }}"><img src={{ asset('images/bin.png') }} alt="Supprimer l'emprunt"></a>
+					</td>
+					<td>{{ e.objet}}</td>
 					<td>{{ e.typeEmprunt.libelle}}</td>
 					<td>{{ e.banque.nom}}</td>
 					<td>{{ e.periodicite.libelle}}</td>
 					<td>{{e.montantEcheance }}€</td>
 					<td>{{e.taux}}%</td>
 					<td>{{e.montantRestDu}}€</td>
+					<td>{{e.dateDeb|date('d/m/Y') }}</td>
+					<td>{{e.duree }}</td>
 				</tr>
 				{% else %}
                     <td>Aucun emprunt n'a été trouvé.</td>

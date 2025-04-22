@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Banque;
-use App\Entity\Compte;
-use App\Entity\TypeCompte;
+use App\Entity\CompagnieAssurance;
+use App\Entity\ContratAssuranceVie;
+use App\Entity\ModeGestion;
+use App\Entity\Periodicite;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,22 +13,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
-class CompteType extends AbstractType
+class ContratAssuranceVieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numero')
             ->add('nom')
+            ->add('numero')
             ->add('solde')
-            ->add('banque', EntityType::class, [
-                'class' => Banque::class,
+            ->add('dateOuverture', null, [
+                'widget' => 'single_text'
+            ])
+            ->add('compagnie_assurance', EntityType::class, [
+                'class' => CompagnieAssurance::class,
                 'choice_label' => 'nom',
             ])
-            ->add('type_compte', EntityType::class, [
-                'class' => TypeCompte::class,
+            ->add('mode_gestion', EntityType::class, [
+                'class' => ModeGestion::class,
                 'choice_label' => 'libelle',
             ])
+            ->add('totalInvestit')
+            ->add('totalRachete')
+            ->add('montantValueLatente')
+            ->add('montantVersementLibre')
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
             ])
@@ -37,7 +45,7 @@ class CompteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Compte::class,
+            'data_class' => ContratAssuranceVie::class,
         ]);
     }
 }

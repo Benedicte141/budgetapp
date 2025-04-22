@@ -2,31 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Banque;
+use App\Entity\Operation;
 use App\Entity\Compte;
-use App\Entity\TypeCompte;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class CompteType extends AbstractType
+class OperationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numero')
-            ->add('nom')
-            ->add('solde')
-            ->add('banque', EntityType::class, [
-                'class' => Banque::class,
-                'choice_label' => 'nom',
+            ->add('libelle')
+            ->add('montant')
+            ->add('date')
+            ->add('date', DateType::class, [
+                'widget' => 'single_text', // Très utile pour lier le champ à un DateTime
+                'html5' => true
             ])
-            ->add('type_compte', EntityType::class, [
-                'class' => TypeCompte::class,
-                'choice_label' => 'libelle',
+            ->add('compte', EntityType::class, [
+                'class' => Compte::class,
+                'choice_label' => 'nom',
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
@@ -37,7 +37,7 @@ class CompteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Compte::class,
+            'data_class' => Operation::class,
         ]);
     }
 }

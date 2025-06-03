@@ -1,35 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des catégories{% endblock %}
+{% block title %}Liste des Catégories{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="align">
+        <h1>Liste des Catégories</h1>
+        <a href="{{ path('app_create_categorie') }}">
+            <img src="{{ asset('images/plus.png') }}" class="IMG_PLUS" alt="Créer une catégorie">
+        </a>
+    </div>
 
-<div class="example-wrapper">
-<div class="align">
-<h1>Liste des catégories </h1>
-<img class = "IMG_PLUS" src={{ asset('images/plus.png') }} alt="Modifier le compte">
-</div>
+    {% for c in categories %}
+        <div class="categorie-block">
+            <h2>{{ c.libelle }}</h2>
+            <div class="IMGS_OPERATION">
+                <a href="{{ path('app_consulter_categorie', {'idCategorie': c.id}) }}">
+                    <img src="{{ asset('images/pencil.png') }}" alt="Modifier la catégorie">
+                </a>
+ {#               <a href="{{ path('app_delete_categorie', {'idCategorie': c.id}) }}">
+                    <img src="{{ asset('images/bin.png') }}" alt="Supprimer la catégorie">
+                </a>#}
+            </div>
 
-		 {% for c in categories %}
-            {{c.libelle}}
-            <table border=1>
-                {%for sc in c.sousCategories %}
-            <tr>
-                <td class = "IMGS_OPERATION">
-                    <img src={{ asset('images/pencil.png') }} alt="Modifier le compte">
-                    <img src={{ asset('images/bin.png') }} alt="Modifier le compte">
-                </td><td>{{sc.libelle}}</td>
-                <td>{{sc.budgetAnnuel}}€</td>
-                <td>{{sc.budgetMensuel}}€</td>
-            </tr>
-            
-            {% endfor %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Libellé</th>
+                        <th>Budget mensuel</th>
+                        <th>Budget annuel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sous in c.sousCategories %}
+                        <tr>
+                            <td>{{ sous.libelle }}</td>
+                            <td>{{ sous.budgetMensuel }}</td>
+                            <td>{{ sous.budgetAnnuel }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="3">Aucune sous-catégorie</td></tr>
+                    {% endfor %}
+                </tbody>
             </table>
-        {% endfor %}
-</div>
+        </div>
+    {% else %}
+        <p>Aucune catégorie n'a été trouvée.</p>
+    {% endfor %}
 {% endblock %}
-

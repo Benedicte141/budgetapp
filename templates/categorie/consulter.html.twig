@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+    <h1>Categorie {{ categorie.libelle }}</h1>
+
+        {% if modifyForm.vars.errors|length > 0 %}
+            <div class="alert alert-error mb-4">
+                {{ form_errors(modifyForm) }}
+            </div>
+        {% endif %}
+    {{ form_start(modifyForm) }}
+    {{ form_end(modifyForm) }}
+   
+{% endblock %}

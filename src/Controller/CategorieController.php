@@ -40,11 +40,7 @@ class CategorieController extends AbstractController
             $entityManager->flush();
 
             
-            return $this->render('categorie/consulter.html.twig', [
-                'modifyForm' => $form->createView(),
-                'categorie' => $categorie
-
-            ]);
+            return $this->redirectToRoute('app_categorie_list');
         }
 
         return $this->render('categorie/consulter.html.twig', [

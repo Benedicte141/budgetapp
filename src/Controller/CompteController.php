@@ -88,12 +88,18 @@ class CompteController extends AbstractController
         if (!$c) {
             return $this->redirectToRoute('app_compte_list');
         }
-
-        $entityManager->remove($c);
+        if ($form->isSubmitted()) {
++            $notifier->send(new Notification('Can you check your submission? There are some problems with it.', ['browser']));
++
+    $entityManager->remove($c);
         $entityManager->flush();
 
+
+        
+        // Redirection vers la liste des comptes
         return $this->redirectToRoute('app_compte_list');
     }
 
 
+}
 }

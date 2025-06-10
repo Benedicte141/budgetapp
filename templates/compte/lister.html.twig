@@ -15,7 +15,13 @@
 		<h1>Liste des comptes </h1>
 		<a href="{{ path('app_create_compte') }}"><img src={{ asset('images/plus.png') }} class = "IMG_PLUS" alt="Créer un compte"></a>
 	</div>
-	
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}	
 	
     <table>
 		<thead>
@@ -38,6 +44,12 @@
 					<td>{{ c.solde}}€</td>
 				</tr>
 				{% else %}
+				{% for message in app.flashes('notification') %}
++        <div class="alert alert-info alert-dismissible fade show">
++            {{ message }}
++            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
++        </div>
++    {% endfor %}
                     <td>Aucun compte n'a été trouvé.</td>
 			{% endfor %}
 		</tbody>

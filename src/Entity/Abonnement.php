@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AbonnementRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AbonnementRepository::class)]
 class Abonnement
@@ -15,15 +16,19 @@ class Abonnement
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le libellé ne peut pas être vide')]
     private ?string $numero_client = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'Le libellé ne peut pas être vide')]
     private ?\DateTimeInterface $date_souscription = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Le libellé ne peut pas être vide')]
     private ?float $montant = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message: 'Le libellé ne peut pas être vide')]
     private ?string $objet = null;
 
     #[ORM\ManyToOne(inversedBy: 'abonnements')]

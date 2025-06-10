@@ -27,6 +27,9 @@ class Banque
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private ?string $ville = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $active = true;
+
     /**
      * @var Collection<int, Compte>
      */
@@ -99,6 +102,17 @@ class Banque
 
         return $this;
     }
+
+    public function isActive(): bool
+{
+    return $this->active;
+}
+
+public function setActive(bool $active): self
+{
+    $this->active = $active;
+    return $this;
+}
 
     /**
      * @return Collection<int, Compte>

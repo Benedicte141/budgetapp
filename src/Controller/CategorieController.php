@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Categorie;
 use App\Form\CategorieType; 
 
+
 class CategorieController extends AbstractController
 {
     #[Route('/categorie/list', name: 'app_categorie_list')]
@@ -65,6 +66,24 @@ class CategorieController extends AbstractController
         
             return $this->redirectToRoute('app_categorie_list'); // redirection ici
         }
+            return $this->render('categorie/create.html.twig', [
+            'creationForm' => $form->createView()
+]);
+
+    }
+
+        #[Route('/categorie/delete/{idCategorie}', name: 'app_delete_categorie')]
+    public function deleteCategorie(Request $request, EntityManagerInterface $entityManager, $idCategorie)
+    {
+        $c = $entityManager->getRepository(Categorie::class)->find($idCategorie);
+        if (!$c) {
+            return $this->redirectToRoute('app_categorie_list');
+        }
+
+        $entityManager->remove($c);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_categorie_list');
     }
         
 }
